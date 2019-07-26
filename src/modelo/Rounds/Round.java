@@ -1,10 +1,12 @@
-package modelo;
+package modelo.Rounds;
+
+import modelo.Entradas;
 
 import java.util.HashMap;
 
-public abstract class Round {
+public class Round {
 
-    private HashMap <String,Entradas> puntuaciones;
+    private HashMap <String, Entradas> puntuaciones;
     private int cantidadEntradas;
 
     public Round(int cantidadEntradas, String participante1, String participante2) {

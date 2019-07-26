@@ -1,8 +1,10 @@
 package modelo;
 
+import modelo.Rounds.Bonificaciones;
+
 import java.util.ArrayList;
 
-public class Entradas {
+public abstract class Entradas {
 
     private ArrayList<int> puntuaciones;
     private int cantidadEntradas;
@@ -18,9 +20,10 @@ public class Entradas {
         }
     }
 
-    public void puntuar(int puntuacion, int numeroEntrada) {
+    public void puntuarEntrada(int puntuacion, int numeroEntrada) {
         this.puntuaciones.add(numeroEntrada - 1 , puntuacion);
     }
+
 
 
     public int getPuntuacionParcial() {
@@ -28,6 +31,9 @@ public class Entradas {
         for (int puntaje : this.puntuaciones){
             puntuacion += puntaje;
         }
+
         return puntuacion;
     }
+
+
 }
