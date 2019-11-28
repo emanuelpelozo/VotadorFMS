@@ -120,4 +120,5 @@ public class RoundTest {
         assertEquals( puntaje1+puntaje2+nuevoPuntaje3, round.getPuntajeAcumulado());
     }
 
+
 }
