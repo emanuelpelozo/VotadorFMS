@@ -2,12 +2,12 @@ package modelo.Batalla;
 
 import java.util.HashMap;
 
-public class ManejadorRondas {
+public class AdministradorRound {
 
     private HashMap<String, Round> rounds;
 
 
-    public ManejadorRondas(){
+    public AdministradorRound(){
 
         rounds = new HashMap<>();
         this.inicializarRounds();

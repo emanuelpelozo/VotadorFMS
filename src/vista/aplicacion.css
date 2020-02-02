@@ -1,9 +1,0 @@
-.panePrincipal{
-    -fx-background-image:url('file:resources/bck_grey.jpg');
-}
-
-.pane-logo{
-    -fx-background-image:url('file:resources/logoFMS.png');
-    -fx-background-size: 250px 160px;
-
-}

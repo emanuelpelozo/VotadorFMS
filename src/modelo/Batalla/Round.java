@@ -1,13 +1,11 @@
 package modelo.Batalla;
 
-import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
-
 import java.util.ArrayList;
 
 public class Round {
 
     private ArrayList<Integer> puntajes;
-    private int cantEntradas;
+    protected int cantEntradas;
 
     public Round(int cantEntradas){
         this.cantEntradas = cantEntradas;
@@ -24,6 +22,7 @@ public class Round {
     }
 
     public int getPuntajePatron(int nroPatron){
+
         return this.puntajes.get( nroPatron - 1);
     }
 
@@ -35,12 +34,10 @@ public class Round {
     public int getPuntajeAcumulado(){
         int puntajeAcumulado = 0;
 
-        for (int i = 0; i < this.cantEntradas; i++) {
+        for (int i = 1; i <= this.cantEntradas; i++) {
 
-            puntajeAcumulado += this.puntajes.get(i);
+            puntajeAcumulado += this.getPuntajePatron(i);
 
-            System.out.println(i);
-            System.out.println(this.puntajes.get(i));
         }
         return puntajeAcumulado;
     }
