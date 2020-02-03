@@ -83,7 +83,7 @@ public class RoundBonificableTest {
     }
 
     @Test
-    public void alDesbonificarPatronPreviamenteBonificadoSeDisminuyeEnUnoElPuntajeDelPatron(){
+    public void alDesbonificarPatronPreviamenteBonificadoMantieneElNumeroVotadoSinBonificacion(){
         int puntajePatron = 1;
         int nroPatron = 2;
         int puntajeBonificado = puntajePatron + 1;
@@ -100,21 +100,61 @@ public class RoundBonificableTest {
 
     @Test
     public void alBonificarDosVecesUnPatronSoloSumaUnoAlPuntajeActual(){
+        int puntajePatron = 1;
+        int nroPatron = 2;
+        int puntajeBonificado = puntajePatron + 1;
 
+        this.round.votarPatron(nroPatron, puntajePatron);
+        this.round.bonificarEntrada(nroPatron);
+        assertEquals(puntajeBonificado, this.round.getPuntajePatron(nroPatron));
+
+        this.round.bonificarEntrada(nroPatron);
+        assertEquals(puntajeBonificado, this.round.getPuntajePatron(nroPatron));
     }
 
     @Test
     public void alDesbonificarUnPatronNoBonificadoNoAfectaAlPuntajeDelPatron(){
 
+        int puntajePatron = 1;
+        int nroPatron = 2;
+        int puntajeDesbonificado = puntajePatron;
+
+        this.round.votarPatron(nroPatron, puntajePatron);
+        this.round.desbonificarEntrada(nroPatron);
+        assertEquals(puntajeDesbonificado, this.round.getPuntajePatron(nroPatron));
     }
+
     @Test
     public void alDesbonificarUnPatronNoBonificadoNoAfeectaAlPuntajeAcumulado(){
+        int puntajePatron = 3;
+        int nroPatron = 2;
+        int puntajeDesbonificado = puntajePatron;
 
+        this.round.votarPatron(nroPatron, puntajePatron);
+        this.round.desbonificarEntrada(nroPatron);
+        assertEquals(puntajeDesbonificado, this.round.getPuntajeAcumulado());
     }
+
+
     @Test
-    public void alBonificarUnPatronYLuegoDesbonificarUnPatronDiferenteSinBonificacionSeMantieneElPuntaje(){
+    public void alBonificarUnPatronYLuegoDesbonificarUnPatronDiferenteSinBonificacionSeMantieneElPuntajeBonificado(){
+        int puntajePatron = 4;
+        int puntajePatron2 = 2;
+        int nroPatron = 3;
+        int nroPatron2 = 2;
+        int puntajeBonificado = puntajePatron + 1;
+
+
+        this.round.votarPatron(nroPatron, puntajePatron);
+        this.round.bonificarEntrada(nroPatron);
+        assertEquals(puntajeBonificado, this.round.getPuntajePatron(nroPatron));
+
+        this.round.desbonificarEntrada(nroPatron2);
+        assertEquals(puntajeBonificado, this.round.getPuntajePatron(nroPatron));
 
     }
-
 
 }
+
+
+

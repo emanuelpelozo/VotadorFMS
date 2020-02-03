@@ -14,11 +14,12 @@ public class BatallaTest {
     public void setUp(){
 
         batalla = new Batalla();
+        batalla.iniciarBatalla("Argentina");
+
     }
 
     @Test
     public void iniciarBatallaYElegirDosCompetidores(){
-        batalla.iniciarBatalla("Argentina");
 
         batalla.setCompetidor1("Dtoke");
         batalla.setCompetidor2("Papo");
@@ -30,7 +31,6 @@ public class BatallaTest {
 
     @Test
     public void alIniciarBatallaAmbosCompetidoresTienenPuntajeAcumuladoCero(){
-        batalla.iniciarBatalla("Argentina");
         batalla.setCompetidor1("Dtoke");
         batalla.setCompetidor2("Papo");
 
