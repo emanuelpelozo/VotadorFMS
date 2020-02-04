@@ -16,7 +16,7 @@ public class RoundBonificableTest {
     @Before
     public void setUp(){
         this.cantEntradas = 4;
-        this.round = new RoundBonificable(this.cantEntradas);
+        this.round = new RoundBonificable("Round", this.cantEntradas);
     }
 
     @Test

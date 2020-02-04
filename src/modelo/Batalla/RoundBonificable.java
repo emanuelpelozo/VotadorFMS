@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class RoundBonificable extends Round {
 
     private ArrayList<Integer> bonificaciones;
-    public RoundBonificable(int cantEntradas) {
-        super(cantEntradas);
+    public RoundBonificable(String nombre, int cantEntradas) {
+        super(nombre, cantEntradas);
         this.bonificaciones = new ArrayList<Integer>();
         this.inicializarBonificaciones();
     }

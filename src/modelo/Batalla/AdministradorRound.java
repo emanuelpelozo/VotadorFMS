@@ -19,12 +19,15 @@ public class AdministradorRound {
 
     private void inicializarRounds() {
 
-        rounds.put("Easy Mode", fabrica.crearEasyMode());
-        rounds.put("Hard Mode", fabrica.crearHardMode());
-        rounds.put("Tematica", fabrica.crearTematica());
-        rounds.put("Personajes", fabrica.crearPersonajes());
-        rounds.put("Libre", fabrica.crearLibreIda());
-        rounds.put("Deluxe", fabrica.crearDeluxe());
+        rounds.put(FabricaRounds.NOMBRE_EM, fabrica.crearEasyMode());
+        rounds.put(FabricaRounds.NOMBRE_HM, fabrica.crearHardMode());
+        rounds.put(FabricaRounds.NOMBRE_TEM, fabrica.crearTematica());
+        rounds.put(FabricaRounds.NOMBRE_PJES, fabrica.crearPersonajes());
+        rounds.put(FabricaRounds.NOMBRE_LIB_IDA, fabrica.crearLibreIda());
+        rounds.put(FabricaRounds.NOMBRE_LIB_VTA, fabrica.crearLibreVuelta());
+        rounds.put(FabricaRounds.NOMBRE_DLXE, fabrica.crearDeluxe());
+
+        this.roundActual = rounds.get(FabricaRounds.NOMBRE_EM);
 
     }
 
@@ -46,6 +49,15 @@ public class AdministradorRound {
     }
 
     public void puntuarPatronNumero(int nroPatron, int puntaje){
+
         this.roundActual.votarPatron(nroPatron, puntaje);
+    }
+
+    public String getNombreRoundActual() {
+        return this.roundActual.getNombre();
+    }
+
+    public int getPuntajeAcumuladoRoundActual() {
+       return this.roundActual.getPuntajeAcumulado();
     }
 }

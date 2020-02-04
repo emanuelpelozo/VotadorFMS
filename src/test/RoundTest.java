@@ -15,7 +15,7 @@ public class RoundTest {
     public void setUp() throws Exception {
 
         this.cantEntradas = 5;
-        this.round = new Round(this.cantEntradas);
+        this.round = new Round("Round", this.cantEntradas);
     }
 
     @Test

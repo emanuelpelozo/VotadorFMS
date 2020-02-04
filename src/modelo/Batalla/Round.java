@@ -6,9 +6,11 @@ public class Round {
 
     private ArrayList<Integer> puntajes;
     protected int cantEntradas;
+    private String nombre;
 
-    public Round(int cantEntradas){
+    public Round(String nombre, int cantEntradas){
         this.cantEntradas = cantEntradas;
+        this.nombre = nombre;
         this.inicializarPuntajes();
     }
 
@@ -43,4 +45,7 @@ public class Round {
     }
 
 
+    public String getNombre() {
+        return this.nombre;
+    }
 }
