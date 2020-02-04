@@ -40,14 +40,20 @@ public class Batalla {
     public int getPuntajeAcumuladoCompetidor(String nombreCompetidor) {
 
         AdministradorRound administradorRound =  this.puntajes.get(nombreCompetidor);
-        return administradorRound.getPuntajeAcumulado();
+        return administradorRound.getPuntajeAcumuladoTotal();
 
     }
 
-    public void puntuarPatronEasyMode(int nroPatron, int puntaje, String competidor) {
+
+
+    public void setRound(String nombreRound) {
+
+        this.puntajes.forEach((competidor,administradorRound) -> administradorRound.setRound(nombreRound));
+    }
+
+    public void puntuarPatronNumero(int nroPatron, int puntaje, String competidor) {
 
         AdministradorRound administradorRound = this.puntajes.get(competidor);
-
-        administradorRound.puntuarEaseMode(nroPatron, puntaje);
+        administradorRound.puntuarPatronNumero(nroPatron, puntaje);
     }
 }

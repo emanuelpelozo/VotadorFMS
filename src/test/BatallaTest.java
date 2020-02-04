@@ -40,17 +40,34 @@ public class BatallaTest {
     }
 
     @Test
-    public void votarUnPatronEnRoundEasyModeModificaElPuntajeTotal(){
+    public void votarUnPatronEnRoundEasyModeModificaElPuntajeTotalDelCompetidorVotado(){
 
-        batalla.iniciarBatalla("Argentina");
         batalla.setCompetidor1("Dtoke");
 
         int nroPatron = 1;
         int puntaje = 2;
 
-        batalla.puntuarPatronEasyMode(nroPatron,puntaje,"Dtoke");
+        batalla.setRound("Easy Mode");
+
+        batalla.puntuarPatronNumero(nroPatron,puntaje,"Dtoke");
 
         assertEquals(batalla.getPuntajeAcumuladoCompetidor("Dtoke"), puntaje);
+    }
+
+    @Test
+    public void votarUnPatronEnRoundEasyModeNoModificaElPuntajeTotalDelOtroCompetidor(){
+
+        batalla.setCompetidor1("Dtoke");
+        batalla.setCompetidor2("Stuart");
+        int nroPatron = 1;
+        int puntaje = 2;
+        int puntajeEsperado = 0;
+
+        batalla.setRound("Easy Mode");
+
+        batalla.puntuarPatronNumero(nroPatron,puntaje,"Dtoke");
+
+        assertEquals(batalla.getPuntajeAcumuladoCompetidor("Stuart"), puntajeEsperado);
     }
 
 
