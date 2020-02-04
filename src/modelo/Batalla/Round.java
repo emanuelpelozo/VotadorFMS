@@ -7,10 +7,14 @@ public class Round {
     private ArrayList<Integer> puntajes;
     protected int cantEntradas;
     private String nombre;
+    private Round siguiente;
+    private Round anterior;
 
     public Round(String nombre, int cantEntradas){
         this.cantEntradas = cantEntradas;
         this.nombre = nombre;
+        this.siguiente = null;
+        this.anterior = null;
         this.inicializarPuntajes();
     }
 
@@ -48,4 +52,29 @@ public class Round {
     public String getNombre() {
         return this.nombre;
     }
+
+    public void setSiguiente(Round roundSig){
+        this.siguiente = roundSig;
+
+    }
+
+    public Round getSiguiente() throws ExcepcionRoundSinSiguiente {
+
+        if(this.siguiente == null){
+            throw new ExcepcionRoundSinSiguiente("El round seleccionado no tiene siguiente");
+        }
+        return this.siguiente;
+    }
+
+    public void setAnterior(Round roundAnt){
+        this.anterior = roundAnt;
+    }
+
+    public Round getAnterior() throws ExcepcionRoundSinAnterior {
+        if(this.anterior == null){
+            throw new ExcepcionRoundSinAnterior("El round seleccionado no tiene anterior");
+        }
+        return this.anterior;
+    }
+
 }

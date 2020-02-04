@@ -1,5 +1,7 @@
 package test;
 
+import modelo.Batalla.ExcepcionRoundSinAnterior;
+import modelo.Batalla.ExcepcionRoundSinSiguiente;
 import modelo.Batalla.Round;
 import org.junit.Before;
 import org.junit.Test;
@@ -120,5 +122,46 @@ public class RoundTest {
         assertEquals( puntaje1+puntaje2+nuevoPuntaje3, round.getPuntajeAcumulado());
     }
 
+
+    @Test
+    public void alSetearSiguienteParaUnRoundYLuegoAvanzarObtengoElRoundSiguiente()  {
+
+        String nombreRoundSig = "Round siguiente";
+        Round roundSiguiente = new Round(nombreRoundSig, 4);
+
+        this.round.setSiguiente(roundSiguiente);
+
+        assertEquals(this.round.getSiguiente().getNombre(), nombreRoundSig);
+
+
+    }
+
+    @Test (expected = ExcepcionRoundSinSiguiente.class)
+    public void alAvanzarEnUnRoundQueNoTieneSeteadoSiguienteSeLanzaExcepcionRoundNoTieneSiguiente(){
+
+        this.round.setSiguiente(null);
+        this.round.getSiguiente();
+
+    }
+
+    @Test(expected = ExcepcionRoundSinSiguiente.class)
+    public void alCrearseElRoundNoTieneSeteadoSiguienteDebeLanzarExcepcion(){
+        this.round.getSiguiente();
+    }
+
+
+    @Test(expected = ExcepcionRoundSinAnterior.class)
+    public void alCrearseElRoundNoTieneSeteadoAnteriorDebeLanzarExcepcion(){
+        this.round.getAnterior();
+    }
+
+
+    @Test (expected = ExcepcionRoundSinAnterior.class)
+    public void alAvanzarEnUnRoundQueNoTieneSeteadoAnteriorSeLanzaExcepcionRoundNoTieneSiguiente(){
+
+        this.round.setAnterior(null);
+        this.round.getAnterior();
+
+    }
 
 }
