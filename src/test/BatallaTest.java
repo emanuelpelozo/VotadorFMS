@@ -48,7 +48,7 @@ public class BatallaTest {
         int nroPatron = 1;
         int puntaje = 2;
 
-        batalla.setRound(FabricaRounds.NOMBRE_EM);
+        batalla.setRound(FabricaRounds.EASY_MODE);
 
         batalla.puntuarPatronNumero(nroPatron,puntaje,"Dtoke");
 
@@ -64,7 +64,7 @@ public class BatallaTest {
         int puntaje = 2;
         int puntajeEsperado = 0;
 
-        batalla.setRound(FabricaRounds.NOMBRE_EM);
+        batalla.setRound(FabricaRounds.EASY_MODE);
 
         batalla.puntuarPatronNumero(nroPatron,puntaje,"Dtoke");
 

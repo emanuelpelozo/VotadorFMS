@@ -1,34 +1,28 @@
 package modelo.Batalla;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AdministradorRound {
 
     private HashMap<String, Round> rounds;
     private Round roundActual;
-    private FabricaRounds fabrica;
 
 
     public AdministradorRound(){
 
         this.rounds = new HashMap<>();
-        this.fabrica = new FabricaRounds();
         this.inicializarRounds();
 
     }
 
     private void inicializarRounds() {
 
-        rounds.put(FabricaRounds.NOMBRE_EM, fabrica.crearEasyMode());
-        rounds.put(FabricaRounds.NOMBRE_HM, fabrica.crearHardMode());
-        rounds.put(FabricaRounds.NOMBRE_TEM, fabrica.crearTematica());
-        rounds.put(FabricaRounds.NOMBRE_PJES, fabrica.crearPersonajes());
-        rounds.put(FabricaRounds.NOMBRE_LIB_IDA, fabrica.crearLibreIda());
-        rounds.put(FabricaRounds.NOMBRE_LIB_VTA, fabrica.crearLibreVuelta());
-        rounds.put(FabricaRounds.NOMBRE_DLXE, fabrica.crearDeluxe());
+        FabricaRounds fabrica = new FabricaRounds();
+        ArrayList<Round> roundsCreados = fabrica.crearRounds();
 
-        this.roundActual = rounds.get(FabricaRounds.NOMBRE_EM);
-
+        roundsCreados.forEach(round -> this.rounds.put(round.getNombre(), round));
+        this.roundActual = this.rounds.get(FabricaRounds.EASY_MODE);
     }
 
 
@@ -60,4 +54,13 @@ public class AdministradorRound {
     public int getPuntajeAcumuladoRoundActual() {
        return this.roundActual.getPuntajeAcumulado();
     }
+
+    public void avanzarRound() throws ExcepcionRoundSinSiguiente{
+        this.roundActual = this.roundActual.getSiguiente();
+    }
+
+    public void retrocederRound() throws ExcepcionRoundSinAnterior{
+        this.roundActual = this.roundActual.getAnterior();
+    }
+
 }

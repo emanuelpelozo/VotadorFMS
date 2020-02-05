@@ -1,6 +1,8 @@
 package test;
 
 import modelo.Batalla.AdministradorRound;
+import modelo.Batalla.ExcepcionRoundSinAnterior;
+import modelo.Batalla.ExcepcionRoundSinSiguiente;
 import modelo.Batalla.FabricaRounds;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +27,7 @@ public class AdministradorRoundTest {
 
     @Test
     public void alSetearNuevoRoundSeActualizaElRoundActual(){
-        String roundASetear = FabricaRounds.NOMBRE_PJES;
+        String roundASetear = FabricaRounds.PERSONAJES;
         String nombreEsperado = roundASetear;
 
         admRound.setRound(roundASetear);
@@ -51,13 +53,13 @@ public class AdministradorRoundTest {
         admRound.puntuarPatronNumero(nroPatron, puntaje);
 
         //Los demas rounds deben tener puntaje acumulado cero.
-        admRound.setRound(FabricaRounds.NOMBRE_HM);
+        admRound.setRound(FabricaRounds.HARD_MODE);
         assertEquals(admRound.getPuntajeAcumuladoRoundActual(), puntajeEsperado);
 
-        admRound.setRound(FabricaRounds.NOMBRE_PJES);
+        admRound.setRound(FabricaRounds.PERSONAJES);
         assertEquals(admRound.getPuntajeAcumuladoRoundActual(), puntajeEsperado);
 
-        admRound.setRound(FabricaRounds.NOMBRE_DLXE);
+        admRound.setRound(FabricaRounds.DELUXE);
         assertEquals(admRound.getPuntajeAcumuladoRoundActual(), puntajeEsperado);
 
     }
@@ -70,10 +72,10 @@ public class AdministradorRoundTest {
         int nroPatron2 = 3;
         int puntajeEsperado = puntaje1 + puntaje2;
 
-        admRound.setRound(FabricaRounds.NOMBRE_HM);
+        admRound.setRound(FabricaRounds.HARD_MODE);
         admRound.puntuarPatronNumero(nroPatron1, puntaje1);
 
-        admRound.setRound(FabricaRounds.NOMBRE_LIB_IDA);
+        admRound.setRound(FabricaRounds.LIBRE_IDA);
         admRound.puntuarPatronNumero(nroPatron2,puntaje2);
 
         assertEquals(admRound.getPuntajeAcumuladoTotal(), puntajeEsperado);
@@ -88,11 +90,11 @@ public class AdministradorRoundTest {
 
         int nroPatron1 = 1;
         int nroPatron2 = 1;
-        String round1 = FabricaRounds.NOMBRE_PJES;
+        String round1 = FabricaRounds.PERSONAJES;
         admRound.setRound(round1);
         admRound.puntuarPatronNumero(nroPatron1, puntaje1);
 
-        admRound.setRound(FabricaRounds.NOMBRE_HM);
+        admRound.setRound(FabricaRounds.HARD_MODE);
         admRound.puntuarPatronNumero(nroPatron2, puntaje2);
 
         admRound.setRound(round1);
@@ -102,11 +104,187 @@ public class AdministradorRoundTest {
 
     @Test
     public void alSetearUnNuevoRoundSeActualizaElNombre(){
-        String nuevoRound = FabricaRounds.NOMBRE_PJES;
+        String nuevoRound = FabricaRounds.PERSONAJES;
 
         admRound.setRound(nuevoRound);
         assertEquals(admRound.getNombreRoundActual(), nuevoRound);
     }
 
+    @Test
+    public void alAvanzarDeEasyModeObtenemosHardMode(){
+        String nombreEsperado = FabricaRounds.HARD_MODE;
+        admRound.avanzarRound();
+
+        assertEquals(admRound.getNombreRoundActual(), nombreEsperado);
+
+    }
+    @Test
+    public void alAvanzarDeEasyModeDosVecesObtenemosTematicaIda(){
+        String nombreEsperado = FabricaRounds.TEMATICA_IDA;
+        admRound.avanzarRound();
+        admRound.avanzarRound();
+
+        assertEquals(admRound.getNombreRoundActual(), nombreEsperado);
+
+    }
+    @Test
+    public void alAvanzarDeEasyModeTresVecesObtenemosTematicaVuelta(){
+        String nombreEsperado = FabricaRounds.TEMATICA_VTA;
+        admRound.avanzarRound();
+        admRound.avanzarRound();
+        admRound.avanzarRound();
+
+        assertEquals(admRound.getNombreRoundActual(), nombreEsperado);
+
+    }
+
+    @Test
+    public void alAvanzarDeEasyModeCuatroVecesObtenemosPersonajes(){
+        String nombreEsperado = FabricaRounds.PERSONAJES;
+
+        for(int i = 0; i < 4; i++) admRound.avanzarRound();
+
+        assertEquals(admRound.getNombreRoundActual(), nombreEsperado);
+
+    }
+
+    @Test
+    public void alAvanzarDeEasyModeCincoVecesObtenemosLibreIda(){
+        String nombreEsperado = FabricaRounds.LIBRE_IDA;
+
+        for(int i = 0; i < 5; i++) admRound.avanzarRound();
+
+        assertEquals(admRound.getNombreRoundActual(), nombreEsperado);
+
+    }
+
+
+    @Test
+    public void alAvanzarDeEasyModeSeisVecesObtenemosLibreVuelta(){
+        String nombreEsperado = FabricaRounds.LIBRE_VTA;
+
+        for(int i = 0; i < 6; i++) admRound.avanzarRound();
+
+        assertEquals(admRound.getNombreRoundActual(), nombreEsperado);
+
+    }
+
+    @Test
+    public void alAvanzarDeEasyModeSieteVecesObtenemosDeluxe(){
+        String nombreEsperado = FabricaRounds.DELUXE;
+
+        for(int i = 0; i < 7; i++) admRound.avanzarRound();
+
+        assertEquals(admRound.getNombreRoundActual(), nombreEsperado);
+
+    }
+
+
+    @Test (expected = ExcepcionRoundSinSiguiente.class)
+    public void alAvanzarDeEasyModeOchoVecesObtenemosExcepcionRoundSinSiguiente(){
+        String nombreEsperado = FabricaRounds.LIBRE_IDA;
+
+        for(int i = 0; i < 8; i++) admRound.avanzarRound();
+
+    }
+
+    @Test(expected = ExcepcionRoundSinAnterior.class)
+    public void alRetrocederDesdeEasyModeObtenemosExcepcionRoundSinAnterior(){
+
+        admRound.retrocederRound();
+    }
+
+
+    @Test
+    public void alSetearManualmentePersonajesYRetrocederObtengoTematicaVuelta(){
+        String nombreEsperado = FabricaRounds.TEMATICA_VTA;
+        admRound.setRound(FabricaRounds.PERSONAJES);
+        admRound.retrocederRound();
+
+        assertEquals(nombreEsperado, admRound.getNombreRoundActual());
+    }
+    @Test
+    public void alSetearManualmentePersonajesYRetrocederDosVecesObtengoTematicaIda(){
+        String nombreEsperado = FabricaRounds.TEMATICA_IDA;
+        admRound.setRound(FabricaRounds.PERSONAJES);
+        admRound.retrocederRound();
+        admRound.retrocederRound();
+
+        assertEquals(nombreEsperado, admRound.getNombreRoundActual());
+    }
+
+
+    @Test
+    public void alSetearManualmenteDeluxeYRetrocederObtengoLibreVuelta(){
+        String nombreEsperado = FabricaRounds.LIBRE_VTA;
+        admRound.setRound(FabricaRounds.DELUXE);
+        admRound.retrocederRound();
+
+        assertEquals(nombreEsperado, admRound.getNombreRoundActual());
+    }
+
+    @Test
+    public void alSetearManualmenteDeluxeYRetrocederDosVecesObtengoLibreIda(){
+        String nombreEsperado = FabricaRounds.LIBRE_IDA;
+        admRound.setRound(FabricaRounds.DELUXE);
+        admRound.retrocederRound();
+        admRound.retrocederRound();
+
+        assertEquals(nombreEsperado, admRound.getNombreRoundActual());
+    }
+
+    @Test
+    public void alSetearManualmenteDeluxeYRetrocederTresVecesObtengoPersonajes(){
+        String nombreEsperado = FabricaRounds.PERSONAJES;
+        admRound.setRound(FabricaRounds.DELUXE);
+        for(int i = 0; i < 3; i++) admRound.retrocederRound();
+
+        assertEquals(nombreEsperado, admRound.getNombreRoundActual());
+    }
+
+    @Test
+    public void alSetearManualmenteDeluxeYRetrocederCuatroVecesObtengoTematicaVuelta(){
+        String nombreEsperado = FabricaRounds.TEMATICA_VTA;
+        admRound.setRound(FabricaRounds.DELUXE);
+        for(int i = 0; i < 4; i++) admRound.retrocederRound();
+
+        assertEquals(nombreEsperado, admRound.getNombreRoundActual());
+    }
+
+    @Test
+    public void alSetearManualmenteDeluxeYRetrocederCincoVecesObtengoTematicaIda(){
+        String nombreEsperado = FabricaRounds.TEMATICA_IDA;
+        admRound.setRound(FabricaRounds.DELUXE);
+        for(int i = 0; i < 5; i++) admRound.retrocederRound();
+
+        assertEquals(nombreEsperado, admRound.getNombreRoundActual());
+    }
+
+
+    @Test
+    public void alSetearManualmenteDeluxeYRetrocederSeisVecesObtengoHardMode(){
+        String nombreEsperado = FabricaRounds.HARD_MODE;
+        admRound.setRound(FabricaRounds.DELUXE);
+        for(int i = 0; i < 6; i++) admRound.retrocederRound();
+
+        assertEquals(nombreEsperado, admRound.getNombreRoundActual());
+    }
+
+
+    @Test
+    public void alSetearManualmenteDeluxeYRetrocederSieteVecesObtengoEasyMode(){
+        String nombreEsperado = FabricaRounds.EASY_MODE;
+        admRound.setRound(FabricaRounds.DELUXE);
+        for(int i = 0; i < 7; i++) admRound.retrocederRound();
+
+        assertEquals(nombreEsperado, admRound.getNombreRoundActual());
+    }
+
+    @Test (expected = ExcepcionRoundSinAnterior.class)
+    public void alSetearManualmenteDeluxeYRetrocederOchoVecesObtengoExcepcionSinAnterior(){
+        admRound.setRound(FabricaRounds.DELUXE);
+        for(int i = 0; i < 8; i++) admRound.retrocederRound();
+
+    }
 
 }
