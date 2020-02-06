@@ -21,42 +21,68 @@ public class FabricaRounds {
     public static final String LIBRE_VTA = "Libre Vuelta";
     public static final String DELUXE = "Deluxe";
 
-    public ArrayList crearRounds(){
+    private int ordenRound;
+
+    public ArrayList crearRoundsParaBatallaFMS(int nroCompetidor){
         EnlazadorDeRounds enlazador = new EnlazadorDeRounds();
         ArrayList<Round> rounds = new ArrayList();
-
+        this.ordenRound = 1;
         crearPalabras(rounds);
         crearTematicas(rounds);
         crearPersonajes(rounds);
-        crearRoundLibre(rounds);
+        crearRoundLibre(rounds, nroCompetidor);
         crearDeluxe(rounds);
 
         enlazador.enlazarRounds(rounds);
         return rounds;
     }
 
+
+    private Round crearRoundConOrden(String nombre, int cantEntradas){
+        Round round = new Round(nombre, cantEntradas);
+        round.setOrden(this.ordenRound);
+        this.ordenRound++;
+        return round;
+    }
+
+    private RoundBonificable crearRoundBonificableConOrden(String nombre, int cantEntradas){
+        RoundBonificable round = new RoundBonificable(nombre, cantEntradas);
+        round.setOrden(this.ordenRound);
+        this.ordenRound++;
+        return round;
+    }
+
     private void crearPalabras(ArrayList rounds){
-        rounds.add( new Round(EASY_MODE, ENTRADAS_EMODE));
-        rounds.add( new Round(HARD_MODE, ENTRADAS_HMODE));
+
+        rounds.add(this.crearRoundConOrden(EASY_MODE, ENTRADAS_EMODE) );
+        rounds.add(this.crearRoundConOrden(HARD_MODE, ENTRADAS_HMODE) );
+
     }
 
     private void crearTematicas(ArrayList rounds) {
-        rounds.add(new Round(TEMATICA_IDA, ENTRADAS_TEMATICA));
-        rounds.add(new Round(TEMATICA_VTA, ENTRADAS_TEMATICA));
+        rounds.add(this.crearRoundConOrden(TEMATICA_IDA, ENTRADAS_TEMATICA));
+        rounds.add(this.crearRoundConOrden(TEMATICA_VTA, ENTRADAS_TEMATICA));
     }
 
     private void crearPersonajes(ArrayList rounds){
-        rounds.add(new RoundBonificable(PERSONAJES, ENTRADAS_PJES));
+        rounds.add(this.crearRoundBonificableConOrden(PERSONAJES, ENTRADAS_PJES));
     }
 
-    private void crearRoundLibre(ArrayList rounds){
-        rounds.add(new Round(LIBRE_IDA, ENTRADAS_LIBRE));
-        rounds.add(new RoundBonificable(LIBRE_VTA, ENTRADAS_LIBRE));
+    private void crearRoundLibre(ArrayList rounds, int nroCompetidor){
+
+        if(nroCompetidor == 1) {
+            rounds.add(this.crearRoundConOrden(LIBRE_IDA, ENTRADAS_LIBRE));
+            rounds.add(this.crearRoundBonificableConOrden(LIBRE_VTA, ENTRADAS_LIBRE));
+        }
+        else{
+            rounds.add(this.crearRoundBonificableConOrden(LIBRE_IDA, ENTRADAS_LIBRE));
+            rounds.add(this.crearRoundConOrden(LIBRE_VTA, ENTRADAS_LIBRE));
+        }
     }
 
     private void crearDeluxe(ArrayList rounds) {
 
-        rounds.add( new Round(DELUXE, ENTRADAS_DELUXE));
+        rounds.add( this.crearRoundConOrden(DELUXE, ENTRADAS_DELUXE));
     }
 
 }

@@ -11,15 +11,14 @@ public class AdministradorRound {
 
     public AdministradorRound(){
 
-        this.rounds = new HashMap<>();
-        this.inicializarRounds();
+        this.rounds = new HashMap<String, Round>();
 
     }
 
-    private void inicializarRounds() {
+    public void inicializarRounds(int nroCompetidor) {
 
         FabricaRounds fabrica = new FabricaRounds();
-        ArrayList<Round> roundsCreados = fabrica.crearRounds();
+        ArrayList<Round> roundsCreados = fabrica.crearRoundsParaBatallaFMS(nroCompetidor);
 
         roundsCreados.forEach(round -> this.rounds.put(round.getNombre(), round));
         this.roundActual = this.rounds.get(FabricaRounds.EASY_MODE);
@@ -63,4 +62,8 @@ public class AdministradorRound {
         this.roundActual = this.roundActual.getAnterior();
     }
 
+
+    public int getNumeroRound() {
+       return this.roundActual.getOrden();
+    }
 }

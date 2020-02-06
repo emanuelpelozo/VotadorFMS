@@ -16,6 +16,7 @@ public class AdministradorRoundTest {
     @Before
     public void setUp(){
         admRound = new AdministradorRound();
+        admRound.inicializarRounds(1);
     }
 
     @Test

@@ -9,6 +9,7 @@ public class Round {
     private String nombre;
     private Round siguiente;
     private Round anterior;
+    private int nroOrden;
 
     public Round(String nombre, int cantEntradas){
         this.cantEntradas = cantEntradas;
@@ -77,4 +78,11 @@ public class Round {
         return this.anterior;
     }
 
+    public void setOrden(int nroOrden){
+        this.nroOrden = nroOrden;
+    }
+
+    public int getOrden() {
+        return this.nroOrden;
+    }
 }
