@@ -7,10 +7,15 @@ import org.junit.Test;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class BatallaTest {
 
     private Batalla batalla;
+    private String competidor1;
+    private String competidor2;
+    private String competidor3;
+
 
     @Before
     public void setUp(){
@@ -18,32 +23,35 @@ public class BatallaTest {
         batalla = new Batalla();
         batalla.setBatallaEnPais("Argentina");
 
+        this.competidor1 = "Stuart";
+        this.competidor1 = "Papo";
+        this.competidor3 = "Dtoke";
     }
 
     @Test
     public void iniciarBatallaYElegirDosCompetidores(){
 
-        batalla.setCompetidor1("Dtoke");
-        batalla.setCompetidor2("Papo");
+        batalla.setCompetidor1(this.competidor1);
+        batalla.setCompetidor2(this.competidor2);
 
-        assertEquals(batalla.getCompetidor1(), "Dtoke");
-        assertEquals(batalla.getCompetidor2(), "Papo");
+        assertEquals(batalla.getCompetidor1(), this.competidor1);
+        assertEquals(batalla.getCompetidor2(), this.competidor2);
     }
 
     @Test
     public void alIniciarBatallaAmbosCompetidoresTienenPuntajeAcumuladoCero(){
-        batalla.setCompetidor1("Dtoke");
-        batalla.setCompetidor2("Papo");
+        batalla.setCompetidor1(this.competidor1);
+        batalla.setCompetidor2(this.competidor2);
 
-        assertEquals(batalla.getPuntajeAcumuladoCompetidor("Dtoke"), 0);
-        assertEquals(batalla.getPuntajeAcumuladoCompetidor("Papo"), 0);
+        assertEquals(batalla.getPuntajeAcumuladoCompetidor(competidor1), 0);
+        assertEquals(batalla.getPuntajeAcumuladoCompetidor(competidor2), 0);
 
     }
 
     @Test
     public void alIniciarBatallaPrimerRoundEsEasyMode(){
-        batalla.setCompetidor1("Papo");
-        batalla.setCompetidor2("Dtoke");
+        batalla.setCompetidor1(this.competidor1);
+        batalla.setCompetidor2(this.competidor2);
 
         assertEquals(batalla.getNombreRoundActual(), FabricaRounds.EASY_MODE);
     }
@@ -51,70 +59,70 @@ public class BatallaTest {
     @Test
     public void votarUnPatronEnRoundEasyModeModificaElPuntajeTotalDelCompetidorVotado(){
 
-        batalla.setCompetidor1("Dtoke");
+        batalla.setCompetidor1(this.competidor1);
 
         int nroPatron = 1;
         int puntaje = 2;
 
         batalla.setEasyMode();
 
-        batalla.puntuarPatronNumero(nroPatron,puntaje,"Dtoke");
+        batalla.puntuarPatronNumero(nroPatron,puntaje,this.competidor1);
 
-        assertEquals(batalla.getPuntajeAcumuladoCompetidor("Dtoke"), puntaje);
+        assertEquals(batalla.getPuntajeAcumuladoCompetidor(this.competidor1), puntaje);
     }
 
     @Test
     public void votarUnPatronEnRoundEasyModeNoModificaElPuntajeTotalDelOtroCompetidor(){
 
-        batalla.setCompetidor1("Dtoke");
-        batalla.setCompetidor2("Stuart");
+        batalla.setCompetidor1(this.competidor3);
+        batalla.setCompetidor2(this.competidor2);
         int nroPatron = 1;
         int puntaje = 2;
         int puntajeEsperado = 0;
 
         batalla.setEasyMode();
 
-        batalla.puntuarPatronNumero(nroPatron,puntaje,"Dtoke");
+        batalla.puntuarPatronNumero(nroPatron,puntaje,this.competidor3);
 
-        assertEquals(batalla.getPuntajeAcumuladoCompetidor("Stuart"), puntajeEsperado);
+        assertEquals(batalla.getPuntajeAcumuladoCompetidor(this.competidor2), puntajeEsperado);
     }
 
     @Test
     public void votarUnPatronEnEasyModeActualizaElPuntajeAcumuladoDelRound(){
-        batalla.setCompetidor1("Papo");
-        batalla.setCompetidor2("DTO");
+        batalla.setCompetidor1(this.competidor1);
+        batalla.setCompetidor2(this.competidor2);
 
         int puntaje = 2;
         int nroPatron = 3;
 
         //Al iniciar se encuentra en easy mode()
-        batalla.puntuarPatronNumero(nroPatron,puntaje, "DTO");
+        batalla.puntuarPatronNumero(nroPatron,puntaje, this.competidor1);
 
-        assertEquals(batalla.getPuntajeAcumuladoEnRoundCompetidor("DTO"), puntaje);
+        assertEquals(batalla.getPuntajeAcumuladoEnRoundCompetidor(this.competidor1), puntaje);
 
     }
 
     @Test
     public void votarUnPatronEnEasyModeNoActualizaElPuntajeAcumuladoDelRoundDelOtroCompetidor(){
-        batalla.setCompetidor1("Papo");
-        batalla.setCompetidor2("DTO");
+        batalla.setCompetidor1(this.competidor1);
+        batalla.setCompetidor2(this.competidor2);
 
         int puntaje = 2;
         int nroPatron = 3;
         int puntajeEsperado = 0;
 
         //Al iniciar se encuentra en easy mode()
-        batalla.puntuarPatronNumero(nroPatron,puntaje, "DTO");
+        batalla.puntuarPatronNumero(nroPatron,puntaje, this.competidor2);
 
-        assertEquals(batalla.getPuntajeAcumuladoEnRoundCompetidor("Papo"), puntajeEsperado);
+        assertEquals(batalla.getPuntajeAcumuladoEnRoundCompetidor(this.competidor1), puntajeEsperado);
     }
 
     @Test
     public void alAvanzarDeRoundSeActualizaElRound(){
 
         String roundEsperado = FabricaRounds.HARD_MODE;
-        batalla.setCompetidor1("Dto");
-        batalla.setCompetidor2("Wos");
+        batalla.setCompetidor1(this.competidor1);
+        batalla.setCompetidor2(this.competidor2);
 
         batalla.avanzarRound();
 
@@ -123,10 +131,9 @@ public class BatallaTest {
 
     @Test
     public void alAvanzarDeRoundSeActualizaELRoundEnLosDosCompetidores(){
-        String competidor1 = "Papo";
-        String competidor2 = "Dtoke";
-        batalla.setCompetidor1(competidor1);
-        batalla.setCompetidor2(competidor2);
+
+        batalla.setCompetidor1(this.competidor1);
+        batalla.setCompetidor2(this.competidor2);
 
         //Voto en el round actual a los dos competidores
         batalla.puntuarPatronNumero(2,3,competidor1);
@@ -141,20 +148,9 @@ public class BatallaTest {
     }
 
     @Test
-    public void enElEasyModeElCompetidorAtacanteEsElUno(){
-        String competidor1 = "Stuart";
-        String competidor2 = "Wos";
-        batalla.setCompetidor1(competidor1);
-        batalla.setCompetidor2(competidor2);
-
-        assertEquals(competidor1, batalla.getAtacanteActual());
-
-    }
-
-    @Test
     public void setearBatallaActualizaElRoundActual(){
-        batalla.setCompetidor2("WOS");
-        batalla.setCompetidor1("PAPO");
+        batalla.setCompetidor2(this.competidor2);
+        batalla.setCompetidor1(this.competidor1);
 
         String roundEsperado1 = FabricaRounds.LIBRE_IDA;
         String roundEsperado2 = FabricaRounds.DELUXE;
@@ -192,9 +188,17 @@ public class BatallaTest {
     }
 
     @Test
+    public void enElEasyModeElCompetidorAtacanteEsElUno(){
+
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        assertEquals(competidor1, batalla.getAtacanteActual());
+
+    }
+
+    @Test
     public void enElHardModeElCompetidorAtacanteEsElDos(){
-        String competidor1 = "Stuart";
-        String competidor2 = "Wos";
         batalla.setCompetidor1(competidor1);
         batalla.setCompetidor2(competidor2);
 
@@ -206,8 +210,6 @@ public class BatallaTest {
 
     @Test
     public void enTematicasIdaElAtacanteEsElCompetidorUno(){
-        String competidor1 = "Stuart";
-        String competidor2 = "Wos";
         batalla.setCompetidor1(competidor1);
         batalla.setCompetidor2(competidor2);
 
@@ -219,49 +221,7 @@ public class BatallaTest {
 
 
     @Test
-    public void enPersonajesElAtacanteEsElCompetidorUno(){
-        String competidor1 = "Stuart";
-        String competidor2 = "Wos";
-        batalla.setCompetidor1(competidor1);
-        batalla.setCompetidor2(competidor2);
-
-        batalla.setPersonajes();
-
-        assertEquals(competidor1, batalla.getAtacanteActual());
-
-    }
-
-    @Test
-    public void enLibreVueltaElAtacanteEsElCompetidorUno(){
-        String competidor1 = "Stuart";
-        String competidor2 = "Wos";
-        batalla.setCompetidor1(competidor1);
-        batalla.setCompetidor2(competidor2);
-
-        batalla.setLibreVuelta();
-
-        assertEquals(competidor1, batalla.getAtacanteActual());
-
-    }
-
-
-    @Test
-    public void enDeluxeIdaElAtacanteEsElCompetidorDos(){
-        String competidor1 = "Stuart";
-        String competidor2 = "Wos";
-        batalla.setCompetidor1(competidor1);
-        batalla.setCompetidor2(competidor2);
-
-        batalla.setDeluxe();
-
-        assertEquals(competidor2, batalla.getAtacanteActual());
-
-    }
-
-    @Test
     public void enTematicasVueltaElAtacanteEsElCompetidorDos(){
-        String competidor1 = "Stuart";
-        String competidor2 = "Wos";
         batalla.setCompetidor1(competidor1);
         batalla.setCompetidor2(competidor2);
 
@@ -271,11 +231,20 @@ public class BatallaTest {
 
     }
 
+    @Test
+    public void enPersonajesElAtacanteEsElCompetidorUno(){
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.setPersonajes();
+
+        assertEquals(competidor1, batalla.getAtacanteActual());
+
+    }
+
 
     @Test
     public void enLibreIdaElAtacanteEsElCompetidorDos(){
-        String competidor1 = "Stuart";
-        String competidor2 = "Wos";
         batalla.setCompetidor1(competidor1);
         batalla.setCompetidor2(competidor2);
 
@@ -284,6 +253,250 @@ public class BatallaTest {
         assertEquals(competidor2, batalla.getAtacanteActual());
 
     }
+
+    @Test
+    public void enLibreVueltaElAtacanteEsElCompetidorUno(){
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.setLibreVuelta();
+
+        assertEquals(competidor1, batalla.getAtacanteActual());
+
+    }
+
+    @Test
+    public void enDeluxeElAtacanteEsElCompetidorDos(){
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.setDeluxe();
+
+        assertEquals(competidor2, batalla.getAtacanteActual());
+
+    }
+
+    @Test
+    public void alVotarDosPatronesEnDosRoundsDistintosSeVaAcumulandoElPuntajeTotalDelCompetidor(){
+
+        int puntaje1 = 2;
+        int puntaje2 = 3;
+        int puntaje3 = 1;
+        int puntaje4 = 4;
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.puntuarPatronNumero(3,puntaje1,competidor1);
+        batalla.puntuarPatronNumero(2, puntaje2, competidor1);
+
+        batalla.avanzarRound();
+        batalla.puntuarPatronNumero(2, puntaje3, competidor1);
+        batalla.puntuarPatronNumero(1,puntaje4, competidor1);
+
+        assertEquals(batalla.getPuntajeAcumuladoCompetidor(competidor1), puntaje1+puntaje2+puntaje3+puntaje4);
+
+
+    }
+
+
+    @Test
+    public void alVotarDosPatronesEnDosRoundsDistintosElPuntajeDeCadaRoundIndividualSeMantiene(){
+
+        int puntaje1 = 2;
+        int puntaje2 = 3;
+        int puntaje3 = 1;
+        int puntaje4 = 4;
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.puntuarPatronNumero(3,puntaje1,competidor1);
+        batalla.puntuarPatronNumero(2, puntaje2, competidor1);
+
+        batalla.avanzarRound();
+        batalla.puntuarPatronNumero(2, puntaje3, competidor1);
+        batalla.puntuarPatronNumero(1,puntaje4, competidor1);
+
+        batalla.retrocederRound();
+        assertEquals(puntaje1+puntaje2, batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor1) );
+
+        batalla.avanzarRound();
+        assertEquals( puntaje3+puntaje4, batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor1));
+
+    }
+
+    @Test
+    public void alVotarElMismoPatronEnElMismoRoundADosCompetidoresDistintosElPuntajeAcumuladoDeRoundDeAmbosCoincide(){
+
+        int nroPatron = 3;
+        int puntaje = 2;
+
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.setPersonajes();
+        batalla.puntuarPatronNumero(nroPatron,puntaje, competidor1);
+        batalla.puntuarPatronNumero(nroPatron, puntaje, competidor2);
+
+        assertEquals( puntaje, batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor2));
+        assertEquals( puntaje, batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor1));
+    }
+
+    @Test
+    public void alVotarElMismoPatronEnElMismoRoundADosCompetidoresDistintosElPuntajeAcumuladoTotalDeAmbosCoincide(){
+
+        int nroPatron = 3;
+        int puntaje = 2;
+
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.setPersonajes();
+        batalla.puntuarPatronNumero(nroPatron,puntaje, competidor1);
+        batalla.puntuarPatronNumero(nroPatron, puntaje, competidor2);
+
+        assertEquals( puntaje, batalla.getPuntajeAcumuladoCompetidor(competidor2));
+        assertEquals( puntaje, batalla.getPuntajeAcumuladoCompetidor(competidor1));
+    }
+
+    @Test
+    public void alVotarElMismoValorEnDiferentePatronEnElMismoRoundADosCompetidoresElPuntajeAcumuladoDeRoundCoincide(){
+
+        int nroPatron = 3;
+        int nroPatron2 = 1;
+        int puntaje = 2;
+
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.setPersonajes();
+        batalla.puntuarPatronNumero(nroPatron,puntaje, competidor1);
+        batalla.puntuarPatronNumero(nroPatron2, puntaje, competidor2);
+
+        assertEquals( puntaje, batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor2));
+        assertEquals( puntaje, batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor1));
+    }
+    @Test
+    public void alVotarElMismoValorEnDiferentePatronEnElMismoRoundADosCompetidoresElPuntajeAcumuladoCoincide(){
+
+        int nroPatron = 3;
+        int nroPatron2 = 1;
+        int puntaje = 2;
+
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.setPersonajes();
+        batalla.puntuarPatronNumero(nroPatron,puntaje, competidor1);
+        batalla.puntuarPatronNumero(nroPatron2, puntaje, competidor2);
+
+        assertEquals( puntaje, batalla.getPuntajeAcumuladoCompetidor(competidor2));
+        assertEquals( puntaje, batalla.getPuntajeAcumuladoCompetidor(competidor1));
+    }
+
+
+    @Test
+    public void alVotarElMismoValorEnDiferentePatronEnDiferenteRoundADosCompetidoresElPuntajeAcumuladoCoincide(){
+
+        int nroPatron = 3;
+        int nroPatron2 = 1;
+        int puntaje = 2;
+
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.setPersonajes();
+        batalla.puntuarPatronNumero(nroPatron,puntaje, competidor1);
+        batalla.setEasyMode();
+        batalla.puntuarPatronNumero(nroPatron2, puntaje, competidor2);
+
+        assertEquals( puntaje, batalla.getPuntajeAcumuladoCompetidor(competidor2));
+        assertEquals( puntaje, batalla.getPuntajeAcumuladoCompetidor(competidor1));
+    }
+
+
+    @Test
+    public void alVotarElMismoPatronEnElMismoRoundPeroDiferentePuntajeADosCompetidoresElPuntajeAcumuladoDeRoundDeAmbosNoCoincide(){
+
+        int nroPatron = 3;
+        int puntaje1 = 2;
+        int puntaje2 = 3;
+
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.setPersonajes();
+        batalla.puntuarPatronNumero(nroPatron,puntaje1, competidor1);
+        batalla.puntuarPatronNumero(nroPatron, puntaje2, competidor2);
+
+        assertNotEquals(batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor1), batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor2));
+        assertEquals( puntaje2, batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor2));
+        assertEquals( puntaje1, batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor1));
+    }
+
+
+
+    @Test
+    public void alVotarElMismoPatronEnElMismoRoundPeroDiferentePuntajeADosCompetidoresElPuntajeAcumuladoTotalDeAmbosNoCoincide(){
+
+        int nroPatron = 3;
+        int puntaje1 = 2;
+        int puntaje2 = 3;
+
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.setPersonajes();
+        batalla.puntuarPatronNumero(nroPatron,puntaje1, competidor1);
+        batalla.puntuarPatronNumero(nroPatron, puntaje2, competidor2);
+
+        assertNotEquals(batalla.getPuntajeAcumuladoCompetidor(competidor1), batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor2));
+        assertEquals( puntaje2, batalla.getPuntajeAcumuladoCompetidor(competidor2));
+        assertEquals( puntaje1, batalla.getPuntajeAcumuladoCompetidor(competidor1));
+    }
+
+    @Test
+    public void votarUnSoloRoundYObtenerElGanadorDevuelveElCompetidorQueSacaVentajaDeCincoEnPuntajeAcumuladoTotal(){
+
+        int puntaje1 = 2;
+        int puntaje2 = 3;
+        int puntaje3 = 4;
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.puntuarPatronNumero(2, puntaje1, competidor1);
+
+        // puntaje2 + puntaje3 = puntaje1 + 5
+        batalla.puntuarPatronNumero(2, puntaje2,competidor2);
+        batalla.puntuarPatronNumero(1, puntaje3, competidor2);
+        assertEquals(batalla.getGanador(), competidor2);
+
+    }
+
+    @Test
+    public void votarUnSoloRoundYObtenerElGanadorDevuelveReplicaSiNadieSacaVentajaDeCincoEnPuntajeAcumuladoTotal(){
+
+        int puntaje1 = 2;
+        int puntaje2 = 3;
+        int puntaje3 = 4;
+        batalla.setCompetidor1(competidor1);
+        batalla.setCompetidor2(competidor2);
+
+        batalla.puntuarPatronNumero(2, puntaje1, competidor1);
+
+        batalla.puntuarPatronNumero(2, puntaje2,competidor2);
+
+        assertEquals(batalla.getGanador(), batalla.REPLICA);
+
+    }
+
+    @Test
+    public void elGanadorPrevaleceAunqueElPerdedorTengaVentajaDeCincoEnUnRoundSiElGanadorTieneVentajaDeCincoEnElTotal(){
+
+    }
+
+
+
+
 
 
 }

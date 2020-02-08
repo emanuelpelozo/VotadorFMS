@@ -8,6 +8,8 @@ public class Batalla {
     private ArrayList<String> competidores;
     private HashMap<String, AdministradorRound> rounds;
     private String competicion;
+    private final int DIFERENCIA_PARA_GANAR = 5;
+    public static final String REPLICA = "Replica";
 
     public Batalla(){
 
@@ -80,6 +82,11 @@ public class Batalla {
 
     }
 
+    public void retrocederRound() {
+        this.rounds.forEach((competidor, administradorRound) -> administradorRound.retrocederRound());
+
+    }
+
     public String getAtacanteActual() {
         AdministradorRound administrador = this.rounds.get(this.getCompetidor1());
         int nroRound = administrador.getNumeroRound();
@@ -105,10 +112,10 @@ public class Batalla {
         this.setRound(FabricaRounds.TEMATICA_VTA);
     }
 
-
     public void setPersonajes() {
         this.setRound(FabricaRounds.PERSONAJES);
     }
+
     public void setLibreIda() {
         this.setRound(FabricaRounds.LIBRE_IDA);
     }
@@ -121,4 +128,17 @@ public class Batalla {
         this.setRound(FabricaRounds.DELUXE);
     }
 
+    public String getGanador() {
+
+        int puntaje1 = this.getPuntajeAcumuladoCompetidor(this.getCompetidor1());
+        int puntaje2 = this.getPuntajeAcumuladoCompetidor(this.getCompetidor2());
+
+        if( puntaje1 >= puntaje2 + DIFERENCIA_PARA_GANAR){
+            return this.getCompetidor1();
+        }
+        else if( puntaje2 >= puntaje1 + DIFERENCIA_PARA_GANAR){
+            return this.getCompetidor2();
+        }
+        return REPLICA;
+    }
 }
