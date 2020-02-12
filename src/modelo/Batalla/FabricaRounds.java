@@ -1,7 +1,9 @@
 package modelo.Batalla;
 
+import modelo.Batalla.Rounds.Round;
+import modelo.Batalla.Rounds.RoundBonificable;
+
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class FabricaRounds {
 

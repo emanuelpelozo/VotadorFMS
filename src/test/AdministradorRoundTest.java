@@ -1,8 +1,8 @@
 package test;
 
 import modelo.Batalla.AdministradorRound;
-import modelo.Batalla.ExcepcionRoundSinAnterior;
-import modelo.Batalla.ExcepcionRoundSinSiguiente;
+import modelo.Batalla.Rounds.ExcepcionRoundSinAnterior;
+import modelo.Batalla.Rounds.ExcepcionRoundSinSiguiente;
 import modelo.Batalla.FabricaRounds;
 import org.junit.Before;
 import org.junit.Test;

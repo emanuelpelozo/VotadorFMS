@@ -1,9 +1,9 @@
 package test;
 
 import modelo.Batalla.EnlazadorDeRounds;
-import modelo.Batalla.ExcepcionRoundSinAnterior;
-import modelo.Batalla.ExcepcionRoundSinSiguiente;
-import modelo.Batalla.Round;
+import modelo.Batalla.Rounds.ExcepcionRoundSinAnterior;
+import modelo.Batalla.Rounds.ExcepcionRoundSinSiguiente;
+import modelo.Batalla.Rounds.Round;
 import org.junit.Before;
 import org.junit.Test;
 

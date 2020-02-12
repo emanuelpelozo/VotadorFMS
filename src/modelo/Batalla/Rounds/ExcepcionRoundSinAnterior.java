@@ -1,4 +1,4 @@
-package modelo.Batalla;
+package modelo.Batalla.Rounds;
 
 public class ExcepcionRoundSinAnterior extends RuntimeException {
 

@@ -1,52 +1,35 @@
-package modelo.Batalla;
+package modelo.Batalla.Rounds;
 
 import java.util.ArrayList;
 
 public class Round {
 
-    private ArrayList<Integer> puntajes;
-    protected int cantEntradas;
+    protected ColeccionDePuntajes puntajes;
+    private ColeccionDePuntajes ptjesExtras;
     private String nombre;
     private Round siguiente;
     private Round anterior;
     private int nroOrden;
 
     public Round(String nombre, int cantEntradas){
-        this.cantEntradas = cantEntradas;
+
+        this.puntajes = new ColeccionDePuntajes(cantEntradas);
+        this.ptjesExtras = new ColeccionDePuntajes(3); //Puesta en escena, flow y tecnicas
         this.nombre = nombre;
         this.siguiente = null;
         this.anterior = null;
-        this.inicializarPuntajes();
-    }
-
-    private void inicializarPuntajes() {
-
-        puntajes = new ArrayList();
-        for(int i = 0; i<this.cantEntradas; i++){
-
-            puntajes.add(i, 0);
-        }
     }
 
     public int getPuntajePatron(int nroPatron){
-
-        return this.puntajes.get( nroPatron - 1);
+        return puntajes.getPuntajeDeEntrada(nroPatron);
     }
 
     public void votarPatron(int nroPatron, int puntaje) {
-
-        this.puntajes.set( nroPatron - 1, puntaje);
+        puntajes.votarEntrada(nroPatron,puntaje);
     }
 
     public int getPuntajeAcumulado(){
-        int puntajeAcumulado = 0;
-
-        for (int i = 1; i <= this.cantEntradas; i++) {
-
-            puntajeAcumulado += this.getPuntajePatron(i);
-
-        }
-        return puntajeAcumulado;
+        return puntajes.getPuntajeAcumulado() + this.ptjesExtras.getPuntajeAcumulado();
     }
 
 
@@ -85,4 +68,18 @@ public class Round {
     public int getOrden() {
         return this.nroOrden;
     }
+
+    public void puntuarFlow(int pjeFlow) {
+        this.ptjesExtras.votarEntrada(1, pjeFlow);
+    }
+
+    public void puntuarPuestaEnEscena(int pjePuestaEscena){
+        this.ptjesExtras.votarEntrada(2, pjePuestaEscena);
+    }
+
+    public void puntuarSkill(int pjeSkill) {
+
+        this.ptjesExtras.votarEntrada(3, pjeSkill);
+    }
+
 }

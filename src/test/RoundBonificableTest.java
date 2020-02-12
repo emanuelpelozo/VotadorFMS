@@ -1,10 +1,8 @@
 package test;
 
-import modelo.Batalla.RoundBonificable;
+import modelo.Batalla.Rounds.RoundBonificable;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.net.PortUnreachableException;
 
 import static org.junit.Assert.assertEquals;
 

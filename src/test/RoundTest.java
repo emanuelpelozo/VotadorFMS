@@ -1,8 +1,8 @@
 package test;
 
-import modelo.Batalla.ExcepcionRoundSinAnterior;
-import modelo.Batalla.ExcepcionRoundSinSiguiente;
-import modelo.Batalla.Round;
+import modelo.Batalla.Rounds.ExcepcionRoundSinAnterior;
+import modelo.Batalla.Rounds.ExcepcionRoundSinSiguiente;
+import modelo.Batalla.Rounds.Round;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -163,5 +163,165 @@ public class RoundTest {
         this.round.getAnterior();
 
     }
+
+    @Test
+    public void puntuarCasillaDeFlowModificaElPuntajeDelRound(){
+        int pjeFlow = 2;
+
+        //Puntaje inicial es cero
+        assertEquals(0, round.getPuntajeAcumulado());
+
+        round.puntuarFlow(pjeFlow);
+        assertEquals(pjeFlow, round.getPuntajeAcumulado());
+
+    }
+
+    @Test
+    public void puntuarCasillaDeFlowSeCuentaSoloUnaVezDentroDelRound(){
+        int pjeFlow = 2;
+        int pje1 = 3;
+        int pje2 = 4;
+        int pje3 = 2;
+        int pjeEntradas = pje1 + pje2 + pje3;
+
+        round.votarPatron(1, pje1);
+        round.votarPatron(2, pje2);
+        round.votarPatron(3, pje3);
+
+        round.puntuarFlow(pjeFlow);
+
+        assertEquals(pjeEntradas + pjeFlow, round.getPuntajeAcumulado());
+
+    }
+
+    @Test
+    public void PuntuarFlowDosVecesModificarCasillaDeFlowYActualizaElPuntajeDelRound(){
+        int pjeFlow = 2;
+        int pjeFlow2 = 1;
+        int pje1 = 3;
+        int pje2 = 4;
+        int pje3 = 2;
+        int pjeEntradas = pje1 + pje2 + pje3;
+
+        round.votarPatron(1, pje1);
+        round.votarPatron(2, pje2);
+        round.votarPatron(3, pje3);
+
+        round.puntuarFlow(pjeFlow);
+
+        assertEquals(pjeEntradas + pjeFlow, round.getPuntajeAcumulado());
+
+        round.puntuarFlow(pjeFlow2);
+        assertEquals(pjeEntradas + pjeFlow2, round.getPuntajeAcumulado());
+
+    }
+
+
+    @Test
+    public void puntuarCasillaDeSkillModificaElPuntajeDelRound(){
+        int pjeSkill = 2;
+
+        //Puntaje inicial es cero
+        assertEquals(0, round.getPuntajeAcumulado());
+
+        round.puntuarSkill(pjeSkill);
+        assertEquals(pjeSkill, round.getPuntajeAcumulado());
+
+    }
+
+    @Test
+    public void puntuarCasillaDeSkillSeCuentaSoloUnaVezDentroDelRound(){
+        int pjeSkill = 2;
+        int pje1 = 3;
+        int pje2 = 4;
+        int pje3 = 2;
+        int pjeEntradas = pje1 + pje2 + pje3;
+
+        round.votarPatron(1, pje1);
+        round.votarPatron(2, pje2);
+        round.votarPatron(3, pje3);
+
+        round.puntuarSkill(pjeSkill);
+
+        assertEquals(pjeEntradas + pjeSkill, round.getPuntajeAcumulado());
+
+    }
+
+    @Test
+    public void PuntuarSkillDosVecesModificarCasillaDeFlowYActualizaElPuntajeDelRound(){
+        int pjeSkill = 2;
+        int pjeSkill2 = 1;
+        int pje1 = 3;
+        int pje2 = 4;
+        int pje3 = 2;
+        int pjeEntradas = pje1 + pje2 + pje3;
+
+        round.votarPatron(1, pje1);
+        round.votarPatron(2, pje2);
+        round.votarPatron(3, pje3);
+
+        round.puntuarFlow(pjeSkill);
+
+        assertEquals(pjeEntradas + pjeSkill, round.getPuntajeAcumulado());
+
+        round.puntuarFlow(pjeSkill2);
+        assertEquals(pjeEntradas + pjeSkill2, round.getPuntajeAcumulado());
+
+    }
+
+    @Test
+    public void puntuarCasillaDePuestaEnEscenaModificaElPuntajeDelRound(){
+        int pjePtaEscena = 2;
+
+        //Puntaje inicial es cero
+        assertEquals(0, round.getPuntajeAcumulado());
+
+        round.puntuarSkill(pjePtaEscena);
+        assertEquals(pjePtaEscena, round.getPuntajeAcumulado());
+
+    }
+
+    @Test
+    public void puntuarCasillaDePuestaEnEscenaSeCuentaSoloUnaVezDentroDelRound(){
+        int pjePtaEscena = 2;
+        int pje1 = 3;
+        int pje2 = 4;
+        int pje3 = 2;
+        int pjeEntradas = pje1 + pje2 + pje3;
+
+        round.votarPatron(1, pje1);
+        round.votarPatron(2, pje2);
+        round.votarPatron(3, pje3);
+
+        round.puntuarPuestaEnEscena(pjePtaEscena);
+
+        assertEquals(pjeEntradas + pjePtaEscena, round.getPuntajeAcumulado());
+
+    }
+
+    @Test
+    public void PuntuarPuestaEnEscenaDosVecesModificarCasillaDeFlowYActualizaElPuntajeDelRound(){
+        int pjePtaEscena = 2;
+        int pjePtaEscena2 = 1;
+        int pje1 = 3;
+        int pje2 = 4;
+        int pje3 = 2;
+        int pjeEntradas = pje1 + pje2 + pje3;
+
+        round.votarPatron(1, pje1);
+        round.votarPatron(2, pje2);
+        round.votarPatron(3, pje3);
+
+        round.puntuarFlow(pjePtaEscena);
+
+        assertEquals(pjeEntradas + pjePtaEscena, round.getPuntajeAcumulado());
+
+        round.puntuarFlow(pjePtaEscena2);
+        assertEquals(pjeEntradas + pjePtaEscena2, round.getPuntajeAcumulado());
+
+    }
+
+
+
 
 }

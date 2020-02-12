@@ -1,5 +1,9 @@
 package modelo.Batalla;
 
+import modelo.Batalla.Rounds.ExcepcionRoundSinAnterior;
+import modelo.Batalla.Rounds.ExcepcionRoundSinSiguiente;
+import modelo.Batalla.Rounds.Round;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -54,11 +58,11 @@ public class AdministradorRound {
        return this.roundActual.getPuntajeAcumulado();
     }
 
-    public void avanzarRound() throws ExcepcionRoundSinSiguiente{
+    public void avanzarRound() throws ExcepcionRoundSinSiguiente {
         this.roundActual = this.roundActual.getSiguiente();
     }
 
-    public void retrocederRound() throws ExcepcionRoundSinAnterior{
+    public void retrocederRound() throws ExcepcionRoundSinAnterior {
         this.roundActual = this.roundActual.getAnterior();
     }
 

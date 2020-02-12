@@ -90,7 +90,6 @@ public class Batalla {
     public String getAtacanteActual() {
         AdministradorRound administrador = this.rounds.get(this.getCompetidor1());
         int nroRound = administrador.getNumeroRound();
-        System.out.println(nroRound);
         if(nroRound % 2 == 0) return this.getCompetidor2();
         return this.getCompetidor1();
     }

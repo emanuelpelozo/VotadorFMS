@@ -1,7 +1,8 @@
 package modelo.Batalla;
 
+import modelo.Batalla.Rounds.Round;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class EnlazadorDeRounds {
 

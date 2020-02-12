@@ -477,7 +477,6 @@ public class BatallaTest {
 
         int puntaje1 = 2;
         int puntaje2 = 3;
-        int puntaje3 = 4;
         batalla.setCompetidor1(competidor1);
         batalla.setCompetidor2(competidor2);
 
@@ -491,6 +490,29 @@ public class BatallaTest {
 
     @Test
     public void elGanadorPrevaleceAunqueElPerdedorTengaVentajaDeCincoEnUnRoundSiElGanadorTieneVentajaDeCincoEnElTotal(){
+        int pje1Comp1 = 4;
+        int pje2Comp1 = 4;
+        int pje1Comp2 = 2;
+        int pje2Comp2 = 4;
+        int pje3Comp2 = 3;
+        int pje4Comp2 = 4;
+
+        batalla.setCompetidor1(this.competidor1);
+        batalla.setCompetidor2(this.competidor2);
+
+        batalla.puntuarPatronNumero(1, pje1Comp1, competidor1);
+        batalla.puntuarPatronNumero(2, pje2Comp1, competidor1);
+
+        batalla.puntuarPatronNumero(1, pje1Comp2, competidor2);
+
+        //El competidor dos sigue puntuando hasta obtener ventaja de 5 sobre el primero
+        batalla.setTematicaIda();
+        batalla.puntuarPatronNumero(1, pje2Comp2, competidor2);
+        batalla.puntuarPatronNumero(2, pje3Comp2, competidor2);
+        batalla.puntuarPatronNumero(3, pje4Comp2, competidor2);
+
+        assertEquals(competidor2, batalla.getGanador());
+
 
     }
 
