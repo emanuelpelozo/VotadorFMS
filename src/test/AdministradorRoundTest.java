@@ -288,4 +288,198 @@ public class AdministradorRoundTest {
 
     }
 
+    @Test
+    public void puntuarFlowModificaElPuntajeAcumuladoRoundActual(){
+        int pjePatron = 1;
+        int pjeFlow = 2;
+        admRound.puntuarPatronNumero(1, pjePatron);
+        admRound.puntuarFlow(pjeFlow);
+
+        assertEquals(pjeFlow + pjePatron, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+    @Test
+    public void puntuarFlowModificaElPuntajeAcumuladoTotal(){
+        int pjePatron = 3;
+        int pjeFlow = 2;
+
+        admRound.puntuarPatronNumero(3,pjePatron);
+        admRound.puntuarFlow(pjeFlow);
+
+        assertEquals(pjeFlow + pjePatron, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+    @Test
+    public void puntuarFlowEnUnRoundNoModificaElPuntajeAcumuladoDeLosDemas(){
+        int pjePatron = 3;
+        int pjeFlow = 2;
+        int pjeEsperado = 0;
+        admRound.puntuarPatronNumero(3,pjePatron);
+        admRound.puntuarFlow(pjeFlow);
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+    @Test
+    public void puntuarFlowUnaVezAvanzadoElRoundActualizaElPuntajeAcumuladoDelRound(){
+        int pjePatron = 3;
+        int pjeFlow = 2;
+
+        admRound.avanzarRound();
+
+        admRound.puntuarPatronNumero(3,pjePatron);
+        admRound.puntuarFlow(pjeFlow);
+
+        assertEquals(pjeFlow + pjePatron, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+    @Test
+    public void puntuarSkillModificaElPuntajeAcumuladoRoundActual(){
+        int pjePatron = 1;
+        int pjeSkill = 2;
+
+        admRound.puntuarPatronNumero(1, pjePatron);
+        admRound.puntuarSkill(pjeSkill);
+
+        assertEquals(pjeSkill + pjePatron, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+    @Test
+    public void puntuarSkillModificaElPuntajeAcumuladoTotal(){
+        int pjePatron = 3;
+        int pjeSkill = 2;
+
+        admRound.puntuarPatronNumero(3,pjePatron);
+        admRound.puntuarSkill(pjeSkill);
+
+        assertEquals(pjeSkill + pjePatron, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+    @Test
+    public void puntuarSkillEnUnRoundNoModificaElPuntajeAcumuladoDeLosDemas(){
+        int pjePatron = 3;
+        int pjeSkill = 2;
+        int pjeEsperado = 0;
+        admRound.puntuarPatronNumero(3,pjePatron);
+        admRound.puntuarSkill(pjeSkill);
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+    @Test
+    public void puntuarSkillUnaVezAvanzadoElRoundActualizaElPuntajeAcumuladoDelRound(){
+        int pjePatron = 3;
+        int pjeSkill = 2;
+
+        admRound.avanzarRound();
+
+        admRound.puntuarPatronNumero(3,pjePatron);
+        admRound.puntuarSkill(pjeSkill);
+
+        assertEquals(pjeSkill + pjePatron, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    @Test
+    public void puntuarPuestaEnEscenaModificaElPuntajeAcumuladoRoundActual(){
+        int pjePatron = 1;
+        int pjePtaEscena  = 2;
+
+        admRound.puntuarPatronNumero(1, pjePatron);
+        admRound.puntuarPuestaEnEscena(pjePtaEscena);
+
+        assertEquals(pjePtaEscena + pjePatron, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+    @Test
+    public void puntuarPuestaEnEscenaModificaElPuntajeAcumuladoTotal(){
+        int pjePatron = 3;
+        int pjePtaEscena = 2;
+
+        admRound.puntuarPatronNumero(3,pjePatron);
+        admRound.puntuarPuestaEnEscena(pjePtaEscena);
+
+        assertEquals(pjePtaEscena + pjePatron, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+    @Test
+    public void puntuarPuestaEnEscenaEnUnRoundNoModificaElPuntajeAcumuladoDeLosDemas(){
+        int pjePatron = 3;
+        int pjePtaEscena = 2;
+        int pjeEsperado = 0;
+        admRound.puntuarPatronNumero(3,pjePatron);
+        admRound.puntuarPuestaEnEscena(pjePtaEscena);
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+        admRound.avanzarRound();
+        assertEquals( pjeEsperado, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
+    @Test
+    public void puntuarPuestaEnEscenaUnaVezAvanzadoElRoundActualizaElPuntajeAcumuladoDelRound(){
+        int pjePatron = 3;
+        int pjePtaEscena= 2;
+
+        admRound.avanzarRound();
+
+        admRound.puntuarPatronNumero(3,pjePatron);
+        admRound.puntuarPuestaEnEscena(pjePtaEscena);
+
+        assertEquals(pjePtaEscena + pjePatron, admRound.getPuntajeAcumuladoRoundActual());
+
+    }
+
 }

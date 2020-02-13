@@ -50,6 +50,8 @@ public class AdministradorRound {
         this.roundActual.votarPatron(nroPatron, puntaje);
     }
 
+
+
     public String getNombreRoundActual() {
         return this.roundActual.getNombre();
     }
@@ -69,5 +71,17 @@ public class AdministradorRound {
 
     public int getNumeroRound() {
        return this.roundActual.getOrden();
+    }
+
+    public void puntuarFlow(int pjeFlow) {
+        this.roundActual.puntuarFlow(pjeFlow);
+    }
+
+    public void puntuarSkill(int pjeSkill) {
+        this.roundActual.puntuarSkill(pjeSkill);
+    }
+
+    public void puntuarPuestaEnEscena(int pjePtaEscena) {
+        this.roundActual.puntuarPuestaEnEscena(pjePtaEscena);
     }
 }

@@ -516,7 +516,17 @@ public class BatallaTest {
 
     }
 
+    @Test
+    public void puntuarFlowModificaElPuntajeAcumuladoDelCompetidorEnElRoundActual(){}
 
+    @Test
+    public void puntuarFlowNoModificaElPuntajeDelOtroCompetidorAcumuladoDelCompetidorEnElRoundActual(){}
+
+    @Test
+    public void puntuarFlowModificaElPuntajeAcumuladoTotalDelCompetidor(){}
+
+    @Test
+    public void puntuarFlowNoModificaElPuntajeAcumuladoTotalDelCompetidor(){}
 
 
 
