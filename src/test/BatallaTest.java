@@ -516,19 +516,206 @@ public class BatallaTest {
 
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////
     @Test
-    public void puntuarFlowModificaElPuntajeAcumuladoDelCompetidorEnElRoundActual(){}
+    public void puntuarFlowModificaElPuntajeAcumuladoDelCompetidorEnElRoundActual(){
+        int pjePatron = 2;
+        int pjeFlow = 1;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarFlow(pjeFlow, competidor1);
+
+        assertEquals(pjePatron + pjeFlow, this.batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor1));
+    }
 
     @Test
-    public void puntuarFlowNoModificaElPuntajeDelOtroCompetidorAcumuladoDelCompetidorEnElRoundActual(){}
+    public void puntuarFlowNoModificaElPuntajeDelOtroCompetidorAcumuladoDelCompetidorEnElRoundActual(){
+        int pjePatron = 3;
+        int pjeFlow = 1;
+        int pjeEsperado = 0;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarFlow(pjeFlow, competidor1);
+
+        assertEquals(pjeEsperado, this.batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor2));
+
+    }
 
     @Test
-    public void puntuarFlowModificaElPuntajeAcumuladoTotalDelCompetidor(){}
+    public void puntuarFlowModificaElPuntajeAcumuladoTotalDelCompetidor(){
+        int pjePatron = 3;
+        int pjeFlow = 1;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarFlow(pjeFlow, competidor1);
+
+        assertEquals( pjeFlow + pjePatron , this.batalla.getPuntajeAcumuladoCompetidor(competidor1));
+
+
+    }
 
     @Test
-    public void puntuarFlowNoModificaElPuntajeAcumuladoTotalDelCompetidor(){}
+    public void puntuarFlowNoModificaElPuntajeAcumuladoTotalDelOtroCompetidor(){
+        int pjePatron = 3;
+        int pjeFlow = 1;
+        int pjeEsperado = 0;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
 
 
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarFlow(pjeFlow, competidor1);
+
+        assertEquals(pjeEsperado, this.batalla.getPuntajeAcumuladoCompetidor(competidor2));
+
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    @Test
+    public void puntuarSkillModificaElPuntajeAcumuladoDelCompetidorEnElRoundActual(){
+        int pjePatron = 2;
+        int pjeSkill = 1;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarSkill(pjeSkill, competidor1);
+
+        assertEquals(pjePatron + pjeSkill, this.batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor1));
+    }
+
+    @Test
+    public void puntuarSkillNoModificaElPuntajeDelOtroCompetidorAcumuladoDelCompetidorEnElRoundActual(){
+        int pjePatron = 3;
+        int pjeSkill = 1;
+        int pjeEsperado = 0;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarSkill(pjeSkill, competidor1);
+
+        assertEquals(pjeEsperado, this.batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor2));
+
+    }
+
+    @Test
+    public void puntuarSkillModificaElPuntajeAcumuladoTotalDelCompetidor(){
+        int pjePatron = 3;
+        int pjeSkill = 1;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarSkill(pjeSkill, competidor1);
+
+        assertEquals( pjeSkill + pjePatron , this.batalla.getPuntajeAcumuladoCompetidor(competidor1));
+
+
+    }
+
+    @Test
+    public void puntuarSkillNoModificaElPuntajeAcumuladoTotalDelOtroCompetidor(){
+        int pjePatron = 3;
+        int pjeSkill = 1;
+        int pjeEsperado = 0;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarSkill(pjeSkill, competidor1);
+
+        assertEquals(pjeEsperado, this.batalla.getPuntajeAcumuladoCompetidor(competidor2));
+
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    @Test
+    public void puntuarPuestaEnEscenaModificaElPuntajeAcumuladoDelCompetidorEnElRoundActual(){
+        int pjePatron = 2;
+        int pjePtaEscena = 1;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarPuestaEnEscena(pjePtaEscena, competidor1);
+
+        assertEquals(pjePatron + pjePtaEscena, this.batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor1));
+    }
+
+    @Test
+    public void puntuarPuestaEnEscenaNoModificaElPuntajeDelOtroCompetidorAcumuladoDelCompetidorEnElRoundActual(){
+        int pjePatron = 3;
+        int pjePtaEscena = 1;
+        int pjeEsperado = 0;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarPuestaEnEscena(pjePtaEscena, competidor1);
+
+        assertEquals(pjeEsperado, this.batalla.getPuntajeAcumuladoEnRoundCompetidor(competidor2));
+
+    }
+
+    @Test
+    public void puntuarPuestaEnEscenaModificaElPuntajeAcumuladoTotalDelCompetidor(){
+        int pjePatron = 3;
+        int pjePtaEscena = 1;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarPuestaEnEscena(pjePtaEscena, competidor1);
+
+        assertEquals( pjePtaEscena + pjePatron , this.batalla.getPuntajeAcumuladoCompetidor(competidor1));
+
+
+    }
+
+    @Test
+    public void puntuarPuestaEnEscenaNoModificaElPuntajeAcumuladoTotalDelOtroCompetidor(){
+        int pjePatron = 3;
+        int pjePtaEscena = 1;
+        int pjeEsperado = 0;
+
+        this.batalla.setCompetidor1(competidor1);
+        this.batalla.setCompetidor2(competidor2);
+
+
+        this.batalla.puntuarPatronNumero(2, pjePatron, competidor1);
+        this.batalla.puntuarPuestaEnEscena(pjePtaEscena, competidor1);
+
+        assertEquals(pjeEsperado, this.batalla.getPuntajeAcumuladoCompetidor(competidor2));
+
+    }
 
 
 }

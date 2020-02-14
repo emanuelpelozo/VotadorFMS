@@ -140,4 +140,16 @@ public class Batalla {
         }
         return REPLICA;
     }
+
+    public void puntuarFlow(int pjeFlow, String competidor) {
+        this.rounds.get(competidor).puntuarFlow(pjeFlow);
+    }
+
+    public void puntuarSkill(int pjeSkill, String competidor) {
+        this.rounds.get(competidor).puntuarSkill(pjeSkill);
+    }
+    public void puntuarPuestaEnEscena(int pjePtaEscena, String competidor) {
+        this.rounds.get(competidor).puntuarPuestaEnEscena(pjePtaEscena);
+    }
+
 }
