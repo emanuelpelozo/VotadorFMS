@@ -87,7 +87,7 @@ public class Batalla {
 
     }
 
-    public String getAtacanteActual() {
+    public String getCompetidorQueAtaca() {
         AdministradorRound administrador = this.rounds.get(this.getCompetidor1());
         int nroRound = administrador.getNumeroRound();
         if(nroRound % 2 == 0) return this.getCompetidor2();
@@ -152,4 +152,8 @@ public class Batalla {
         this.rounds.get(competidor).puntuarPuestaEnEscena(pjePtaEscena);
     }
 
+    public String getCompetidorQueResponde() {
+        if (this.getGanador() == this.getCompetidor1()) return this.getCompetidor2();
+        return this.getCompetidor1();
+    }
 }
