@@ -193,7 +193,7 @@ public class BatallaTest {
         batalla.setCompetidor1(competidor1);
         batalla.setCompetidor2(competidor2);
 
-        assertEquals(competidor1, batalla.getAtacanteActual());
+        assertEquals(competidor1, batalla.getCompetidorQueAtaca());
 
     }
 
@@ -204,7 +204,7 @@ public class BatallaTest {
 
         batalla.setHardMode();
 
-        assertEquals(competidor2, batalla.getAtacanteActual());
+        assertEquals(competidor2, batalla.getCompetidorQueAtaca());
 
     }
 
@@ -215,7 +215,7 @@ public class BatallaTest {
 
         batalla.setTematicaIda();
 
-        assertEquals(competidor1, batalla.getAtacanteActual());
+        assertEquals(competidor1, batalla.getCompetidorQueAtaca());
 
     }
 
@@ -227,7 +227,7 @@ public class BatallaTest {
 
         batalla.setTematicaVuelta();
 
-        assertEquals(competidor2, batalla.getAtacanteActual());
+        assertEquals(competidor2, batalla.getCompetidorQueAtaca());
 
     }
 
@@ -238,7 +238,7 @@ public class BatallaTest {
 
         batalla.setPersonajes();
 
-        assertEquals(competidor1, batalla.getAtacanteActual());
+        assertEquals(competidor1, batalla.getCompetidorQueAtaca());
 
     }
 
@@ -250,7 +250,7 @@ public class BatallaTest {
 
         batalla.setDeluxe();
 
-        assertEquals(competidor2, batalla.getAtacanteActual());
+        assertEquals(competidor2, batalla.getCompetidorQueAtaca());
 
     }
 
@@ -261,7 +261,7 @@ public class BatallaTest {
 
         batalla.setLibreVuelta();
 
-        assertEquals(competidor1, batalla.getAtacanteActual());
+        assertEquals(competidor1, batalla.getCompetidorQueAtaca());
 
     }
 
@@ -272,7 +272,7 @@ public class BatallaTest {
 
         batalla.setDeluxe();
 
-        assertEquals(competidor2, batalla.getAtacanteActual());
+        assertEquals(competidor2, batalla.getCompetidorQueAtaca());
 
     }
 
