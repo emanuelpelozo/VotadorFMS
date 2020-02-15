@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="700.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorVistaPrincipal">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -50,13 +52,34 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="369.0" prefWidth="633.0" style="-fx-background-color: pink;" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="26.4404296875" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+               <children>
+                  <Label id="titulo" fx:id="labelTitulo" onMouseClicked="#cambiarFuente" onMousePressed="#cambiarFuente" style="-fx-font-size: 50;" stylesheets="@stylesheet.css" text="FORMATO FMS">
+                     <font>
+                        <Font name="KacstTitleL" size="50.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="82.0" prefWidth="531.0" spacing="80.0" style="-fx-background-color: lightblue;">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label styleClass="botones" text="Nueva Batalla">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <Label styleClass="botones" text="Cargar Batalla">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
       </children>
     </AnchorPane>
   </children>

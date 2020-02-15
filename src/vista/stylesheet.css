@@ -1,0 +1,45 @@
+@font-face {
+    src: url("../../../resources/fonts/Charnego.otf");
+
+}
+
+@font-face {
+
+    src: url("../../../resources/fonts/TRON.TTF");
+}
+
+
+@font-face {
+    src: url("../../../resources/fonts/Painterz.ttf");
+}
+
+@font-face {
+
+    src: url("../../../resources/fonts/Bombing.ttf");
+}
+
+
+@font-face {
+
+    src: url("../../../resources/fonts/THE_JACATRA.otf");
+}
+
+@font-face {
+
+    src: url("../../../resources/fonts/whoa!.ttf");
+}
+
+
+
+.text {
+    -fx-font-family: Painterz;
+}
+
+#titulo {
+    -fx-font-size: 50px;
+}
+
+.botones {
+    -fx-font-size: 35px;
+
+}
