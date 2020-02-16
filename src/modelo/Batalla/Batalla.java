@@ -153,7 +153,7 @@ public class Batalla {
     }
 
     public String getCompetidorQueResponde() {
-        if (this.getGanador() == this.getCompetidor1()) return this.getCompetidor2();
+        if (this.getCompetidorQueAtaca() == this.getCompetidor1()) return this.getCompetidor2();
         return this.getCompetidor1();
     }
 }

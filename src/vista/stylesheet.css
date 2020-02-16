@@ -1,45 +1,54 @@
 @font-face {
-    src: url("../../../resources/fonts/Charnego.otf");
+    src: url("../resources/fonts/Charnego.otf");
 
 }
 
 @font-face {
 
-    src: url("../../../resources/fonts/TRON.TTF");
+    src: url("../resources/fonts/TRON.TTF");
 }
 
 
 @font-face {
-    src: url("../../../resources/fonts/Painterz.ttf");
+    src: url("../resources/fonts/Painterz.ttf");
 }
 
 @font-face {
 
-    src: url("../../../resources/fonts/Bombing.ttf");
+    src: url("../resources/fonts/Bombing.ttf");
 }
 
 
 @font-face {
 
-    src: url("../../../resources/fonts/THE_JACATRA.otf");
+    src: url("../resources/fonts/THE_JACATRA.otf");
 }
 
-@font-face {
+.anchor {
+    -fx-background-image: url("../resources/images/microfono_old_school.jpg");
+    -fx-background-size: 800 400;
 
-    src: url("../../../resources/fonts/whoa!.ttf");
-}
-
-
-
-.text {
-    -fx-font-family: Painterz;
 }
 
 #titulo {
+    -fx-font-family: Bombing;
     -fx-font-size: 50px;
 }
 
-.botones {
-    -fx-font-size: 35px;
+.botonPrincipal {
+    -fx-font-family: Bombing;
+    -fx-font-size: 25px;
+    -fx-background-color: #000004;
 
 }
+
+.textoSecundario{
+    -fx-font-family: Painterz;
+
+}
+
+.botonSecundario{
+    -fx-font-family: Painterz;
+}
+
+

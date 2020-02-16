@@ -1,86 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="700.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorVistaPrincipal">
-  <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="369.0" prefWidth="633.0" style="-fx-background-color: pink;" VBox.vgrow="ALWAYS">
-      <children>
-            <VBox alignment="CENTER" layoutX="10.0" layoutY="26.4404296875" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="369.0" prefWidth="633.0" style="-fx-background-color: #ccccff;" styleClass="anchor" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorVistaPrincipal">
+<children>
+      <VBox alignment="CENTER" layoutX="10.0" layoutY="26.4404296875" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <Label id="titulo" alignment="CENTER" contentDisplay="RIGHT" styleClass="textoPrincipal" stylesheets="@stylesheet.css" text="FORMATO FMS" textFill="#7365c3">
+               <font>
+                  <Font name="KacstTitleL" size="50.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="80.0">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
                <children>
-                  <Label id="titulo" fx:id="labelTitulo" onMouseClicked="#cambiarFuente" onMousePressed="#cambiarFuente" style="-fx-font-size: 50;" stylesheets="@stylesheet.css" text="FORMATO FMS">
-                     <font>
-                        <Font name="KacstTitleL" size="50.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER" prefHeight="82.0" prefWidth="531.0" spacing="80.0" style="-fx-background-color: lightblue;">
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                     <children>
-                        <Label styleClass="botones" text="Nueva Batalla">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Label>
-                        <Label styleClass="botones" text="Cargar Batalla">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
+                  <JFXButton fx:id="btnNuevaBatalla" onAction="#nuevaBatallaButtonClicked" styleClass="botonPrincipal" text="NUEVA BATALLA" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" />
+                  <JFXButton fx:id="btnCargarBatalla" onAction="#cargarBatallaButtonClicked" styleClass="botonPrincipal" text="CARGAR BATALLA" textFill="WHITE" />
                </children>
-            </VBox>
-      </children>
-    </AnchorPane>
-  </children>
-</VBox>
+            </HBox>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <VBox fx:id="vistaConfiguracion" alignment="CENTER" style="-fx-background-color: #8585e0;" styleClass="textoSecundario" stylesheets="@stylesheet.css">
+                     <children>
+                        <Label alignment="CENTER" style="-fx-font-size: 20 px;" styleClass="textoSecundario" text="Seleccione un país:" />
+                        <HBox alignment="CENTER" prefHeight="79.0" prefWidth="660.0" spacing="10.0">
+                           <children>
+                              <VBox alignment="CENTER" onMouseClicked="#imagenCompetenciaClicked" onMouseEntered="#iluminar" onMouseExited="#deshacerIluminacion">
+                                 <children>
+                                    <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/argentinaLogo.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="Argentina" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" layoutX="267.0" layoutY="10.0" onMouseClicked="#imagenCompetenciaClicked" onMouseEntered="#iluminar" onMouseExited="#deshacerIluminacion">
+                                 <children>
+                                    <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/chileLogo.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="Chile" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" onMouseClicked="#imagenCompetenciaClicked" onMouseEntered="#iluminar" onMouseExited="#deshacerIluminacion">
+                                 <children>
+                                    <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/españaLogo.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="España" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" onMouseClicked="#imagenCompetenciaClicked" onMouseEntered="#iluminar" onMouseExited="#deshacerIluminacion">
+                                 <children>
+                                    <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/mexicoLogo.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="Mexico" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" onMouseClicked="#imagenCompetenciaClicked" onMouseEntered="#iluminar" onMouseExited="#deshacerIluminacion">
+                                 <children>
+                                    <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/peruLogo.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="Peru" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" onMouseClicked="#imagenCompetenciaClicked" onMouseEntered="#iluminar" onMouseExited="#deshacerIluminacion">
+                                 <children>
+                                    <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/internacionalLogo.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="Internacional" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="20.0">
+                           <children>
+                              <HBox alignment="CENTER" maxHeight="50.0" spacing="10.0">
+                                 <children>
+                                    <Label style="-fx-font-size: 30 px;" styleClass="textoSecundario" text="mC 1" />
+                                    <JFXTextField fx:id="txtFieldMC1" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" maxHeight="50.0" spacing="10.0">
+                                 <children>
+                                    <Label style="-fx-font-size: 30 px;" styleClass="textoSecundario" text="mC 1" />
+                                    <JFXTextField fx:id="txtFieldMC2" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <JFXButton onAction="#comenzarBatallaButtonClicked" styleClass="textoSecundario" text="Comenzar BATALLA" />
+                     </children>
+                  </VBox>
+                  <ImageView fx:id="imgFMS" fitHeight="123.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/logoFMS.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+</children>
+</AnchorPane>

@@ -20,8 +20,10 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("/vista/vistaPrincipal.fxml"));
         primaryStage.setTitle("Formato FMS");
-        primaryStage.setScene(new Scene(root, 700, 400));
+        primaryStage.setScene(new Scene(root, 800, 400));
         primaryStage.show();
+        root.requestFocus();
+
 
     }
 }
