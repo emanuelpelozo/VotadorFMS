@@ -1,18 +1,16 @@
-package modelo;
+package vista;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import vista.tableroVotacion.VistaPuntuacionCompetidor;
+import vista.tableroVotacion.VistaRoundParaPuntuacion;
 
 import java.io.IOException;
 
-public class Main extends Application {
+public class FMSApp extends Application {
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -26,17 +24,17 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("/vista/vistaPrincipal.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/vista/vistaVotacion.fxml"));
+
         primaryStage.setTitle("Formato FMS");
 
         primaryStage.setScene(new Scene(root));
 
 
 
-        primaryStage.initStyle(StageStyle.);
+//        primaryStage.initStyle(StageStyle.);
         primaryStage.show();
         primaryStage.sizeToScene();
-        primaryStage.setMaxHeight(800);
-        primaryStage.setMaxWidth(800);
+
         root.requestFocus();
 
 

@@ -80,11 +80,6 @@ public class ControladorVistaPrincipal implements Initializable {
         FormatoFMS app = FormatoFMS.getInstance();
         app.iniciarBatallaNuevaEnPais(this.pais, this.txtFieldMC1.getText(), this.txtFieldMC2.getText());
 
-//        Parent vistaVotacionParent = FXMLLoader.load(getClass().getResource("../vista/vistaVotacion.fxml"));
-//        Scene vistaVotacionScene = new Scene(vistaVotacionParent);
-//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        window.setScene(vistaVotacionScene);
-
         CambioDeEscena cambioDeEscena = new CambioDeEscena("../vista/vistaVotacion.fxml",
                 (Node) event.getSource());
 

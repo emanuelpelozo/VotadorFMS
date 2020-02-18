@@ -17,7 +17,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane fx:id="contenedorPrincipal" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorVistaVotacion">
    <bottom>
       <VBox fx:id="vistaOpciones" alignment="CENTER" fillWidth="false" spacing="20.0" style="-fx-background-color: ffa64d;" BorderPane.alignment="TOP_LEFT">
@@ -67,17 +66,9 @@
       </VBox>
    </bottom>
    <top>
-      <JFXTabPane side="BOTTOM" stylesheets="@stylesheet.css">
+      <JFXTabPane fx:id="tabPane" side="BOTTOM" stylesheets="@stylesheet.css">
          <tabs>
-            <Tab text="Easy/Hard">
-              <content>
-                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/easymode_ejemplo.png" />
-                     </image>
-                  </ImageView>
-              </content>
-            </Tab>
+            <Tab text="Easy/Hard" />
             <Tab text="Tematicas">
                <content>
                   <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
