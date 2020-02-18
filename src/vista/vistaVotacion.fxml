@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane fx:id="contenedorPrincipal" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorVistaVotacion">
+   <bottom>
+      <VBox fx:id="vistaOpciones" alignment="CENTER" fillWidth="false" spacing="20.0" style="-fx-background-color: ffa64d;" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <Separator halignment="RIGHT" prefHeight="0.0" prefWidth="570.0" valignment="TOP" />
+            <HBox spacing="10.0">
+               <children>
+                  <JFXRadioButton styleClass="textoSecundario" text="Ocultar sumatoria parcial" />
+                  <JFXRadioButton styleClass="textoSecundario" text="Ocultar sumatoria parcial" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label alignment="TOP_LEFT" styleClass="textoSecundario" text="Diferencia minima para replica">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField alignment="CENTER" prefHeight="5.0" prefWidth="20.0" style="-fx-background-color: lightblue;" text="5">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </JFXTextField>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </HBox>
+            <Separator halignment="RIGHT" prefHeight="0.0" prefWidth="570.0" valignment="TOP" />
+            <ButtonBar>
+               <buttons>
+                  <JFXButton onAction="#botonNuevaBatallaClicked" styleClass="botonSecundario" text="Nueva Batalla" />
+                  <JFXButton styleClass="botonSecundario" text="Guardar batalla" />
+                  <JFXButton fx:id="btnSalir" onAction="#botonSalirClicked" style="-fx-background-color: #ff471a;" styleClass="botonSecundario" text="Salir" />
+               </buttons>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </ButtonBar>
+         </children>
+         <padding>
+            <Insets left="10.0" top="10.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </bottom>
+   <top>
+      <JFXTabPane side="BOTTOM" stylesheets="@stylesheet.css">
+         <tabs>
+            <Tab text="Easy/Hard">
+              <content>
+                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/easymode_ejemplo.png" />
+                     </image>
+                  </ImageView>
+              </content>
+            </Tab>
+            <Tab text="Tematicas">
+               <content>
+                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/easymode_ejemplo.png" />
+                     </image>
+                  </ImageView>
+               </content>
+            </Tab>
+            <Tab text="Deluxe">
+               <content>
+                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/easymode_ejemplo.png" />
+                     </image>
+                  </ImageView>
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </top>
+   <center>
+      <HBox alignment="CENTER_LEFT" style="-fx-background-color: #b3cce6;">
+         <children>
+            <JFXToggleButton fx:id="toggleOpciones" alignment="TOP_LEFT" onAction="#ocultarOpcionesClicked" styleClass="textoSecundario" text="Vista reducida" />
+            <JFXButton ripplerFill="BLACK" styleClass="botonSecundario" text="Obtener resultados" />
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

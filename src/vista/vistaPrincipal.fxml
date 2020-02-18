@@ -6,22 +6,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="369.0" prefWidth="633.0" style="-fx-background-color: #ccccff;" styleClass="anchor" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorVistaPrincipal">
-<children>
-      <VBox alignment="CENTER" layoutX="10.0" layoutY="26.4404296875" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+<BorderPane styleClass="anchor" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorVistaPrincipal">
+   <center>
+      <VBox alignment="CENTER" stylesheets="@stylesheet.css">
          <children>
-            <Label id="titulo" alignment="CENTER" contentDisplay="RIGHT" styleClass="textoPrincipal" stylesheets="@stylesheet.css" text="FORMATO FMS" textFill="#7365c3">
-               <font>
-                  <Font name="KacstTitleL" size="50.0" />
-               </font>
-            </Label>
             <HBox alignment="CENTER" spacing="80.0">
                <padding>
                   <Insets bottom="10.0" top="10.0" />
@@ -33,9 +28,9 @@
             </HBox>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <VBox fx:id="vistaConfiguracion" alignment="CENTER" style="-fx-background-color: #8585e0;" styleClass="textoSecundario" stylesheets="@stylesheet.css">
+                  <VBox fx:id="vistaConfiguracion" alignment="CENTER" spacing="20.0" style="-fx-background-color: #8585e0;" styleClass="textoSecundario" stylesheets="@stylesheet.css">
                      <children>
-                        <Label alignment="CENTER" style="-fx-font-size: 20 px;" styleClass="textoSecundario" text="Seleccione un país:" />
+                        <Label fx:id="labelSeleccionPais" alignment="CENTER" style="-fx-font-size: 20 px;" styleClass="textoSecundario" text="Seleccione un país:" />
                         <HBox alignment="CENTER" prefHeight="79.0" prefWidth="660.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER" onMouseClicked="#imagenCompetenciaClicked" onMouseEntered="#iluminar" onMouseExited="#deshacerIluminacion">
@@ -128,5 +123,12 @@
             </StackPane>
          </children>
       </VBox>
-</children>
-</AnchorPane>
+   </center>
+   <top>
+      <Label id="titulo" alignment="CENTER" contentDisplay="RIGHT" styleClass="textoPrincipal" stylesheets="@stylesheet.css" text="FORMATO FMS" textFill="#7365c3" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="KacstTitleL" size="50.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>

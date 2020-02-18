@@ -38,7 +38,7 @@
 .botonPrincipal {
     -fx-font-family: Bombing;
     -fx-font-size: 25px;
-    -fx-background-color: #000004;
+    -fx-background-color: #000033;
 
 }
 
@@ -49,6 +49,17 @@
 
 .botonSecundario{
     -fx-font-family: Painterz;
+    -fx-background-color: #99ff99;
+}
+
+.botonVotacion {
+
+    -fx-font-family: Painterz;
+}
+
+.tab {
+    -fx-pref-width: 131;
+    -fx-pref-height: 20;
 }
 
 
