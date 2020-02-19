@@ -3,7 +3,6 @@ package vista.tableroVotacion;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import modelo.FormatoFMS;
 
 
 public class VistaRoundParaPuntuacion extends VBox {
@@ -17,6 +16,7 @@ public class VistaRoundParaPuntuacion extends VBox {
         this.vistaCompetidor1 = new VistaPuntuacionCompetidor(competidor1);
         this.vistaCompetidor2 = new VistaPuntuacionCompetidor(competidor2);
         this.inicializar();
+
     }
 
     private void inicializar() {
@@ -30,11 +30,5 @@ public class VistaRoundParaPuntuacion extends VBox {
         this.vistaCompetidor2.inicializarParaCantRounds(cantRounds);
     }
 
-    public void actualizarAcumulado() {
-        FormatoFMS app = FormatoFMS.getInstance();
-        String competidor1 = app.getCompetidorQueAtaca();
-        String competidor2 = app.getCompetidorQueResponde();
-        this.vistaCompetidor1.actualizarPuntajeParcial(app.getPuntajeRoundActualParaCompetidor(competidor1));
-        this.vistaCompetidor2.actualizarPuntajeParcial(app.getPuntajeRoundActualParaCompetidor(competidor2));
-    }
+
 }

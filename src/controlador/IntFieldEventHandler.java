@@ -51,7 +51,6 @@ public class IntFieldEventHandler implements EventHandler<KeyEvent> {
 
         int nro = casilla.getValue();
         if(nombreCasilla.matches("\\d+")){
-            System.out.println("ENTRAMO PAPUUUUUUU");
             app.puntuarPatronParaCompetidor(Integer.parseInt(nombreCasilla),
                     nro, this.nombreCompetidor);
         }

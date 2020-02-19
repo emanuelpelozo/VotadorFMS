@@ -8,7 +8,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import vista.IntField;
 
-import java.awt.event.KeyEvent;
 
 
 public class Casillero extends VBox {
@@ -22,18 +21,16 @@ public class Casillero extends VBox {
 
         this.nombre = new Label(nombre);
         this.nombreCompetidor = nombreCompetidor;
-        casilla = new IntField(0,20, 0);
+        casilla = new IntField(0,9, 0);
         this.inicializar();
         this.estilizarCasilla();
+
     }
 
     private void inicializar() {
         this.getChildren().addAll(this.nombre, this.casilla);
         this.setAlignment(Pos.CENTER);
         this.setSpacing(2);
-//
-//        this.casilla.setOnAction(new
-//                IntFieldEventHandler(this.nombre.getText(), this.nombreCompetidor));
 
         this.casilla.setOnKeyReleased(new
                 IntFieldEventHandler(this.nombre.getText(), this.nombreCompetidor));
@@ -52,10 +49,4 @@ public class Casillero extends VBox {
         this.getChildren().add(this.bonificacion);
     }
 
-
-    public void setPuntaje(int pje) {
-        System.out.println("Entro");
-        System.out.println("Puntaje: " + Integer.toString(pje));
-        this.casilla.setValue(pje);
-    }
 }

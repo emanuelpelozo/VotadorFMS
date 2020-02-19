@@ -1,5 +1,6 @@
 package vista.tableroVotacion;
 
+import controlador.VistaPuntuacionCompetidorEventHandler;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -11,14 +12,14 @@ public class VistaPuntuacionCompetidor extends HBox {
     private Label nombreCompetidor;
     private HBox casillasPrincipales;
     private HBox casillasEspeciales;
-    private Casillero puntajeAcumulado;
+    private CasilleroAcumulador puntajeAcumulado;
 
     public VistaPuntuacionCompetidor(String nombreCompetidor){
 
         this.nombreCompetidor = new Label(nombreCompetidor);
         this.casillasEspeciales = new HBox();
         this.casillasPrincipales = new HBox();
-        this.puntajeAcumulado = new Casillero("Total", nombreCompetidor);
+        this.puntajeAcumulado = new CasilleroAcumulador(nombreCompetidor, "Total");
         this.inicializar();
     }
 
@@ -26,7 +27,9 @@ public class VistaPuntuacionCompetidor extends HBox {
         this.getChildren().add(nombreCompetidor);
         this.setSpacing(20);
         this.setAlignment(Pos.CENTER);
-//        this.puntajeAcumulado
+
+        this.setOnKeyReleased(new VistaPuntuacionCompetidorEventHandler());
+
     }
 
     public void inicializarParaCantRounds(int cantRounds) {
@@ -52,7 +55,12 @@ public class VistaPuntuacionCompetidor extends HBox {
         this.getChildren().addAll(flow,skill,ptaEscena, this.puntajeAcumulado);
     }
 
-    public void actualizarPuntajeParcial(int pje) {
-        this.puntajeAcumulado.setPuntaje(pje);
+    public String getCompetidor(){
+        return this.nombreCompetidor.getText();
+    }
+
+
+    public void setPuntaje(int puntaje) {
+        this.puntajeAcumulado.setPuntaje(puntaje);
     }
 }

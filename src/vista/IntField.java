@@ -1,5 +1,7 @@
 package vista;
 
+import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
@@ -12,6 +14,7 @@ public class IntField extends TextField {
     final private IntegerProperty value;
     final private int minValue;
     final private int maxValue;
+    final private int maxLength = 1;
 
     // expose an integer value property for the text field.
     public int  getValue()                 { return value.getValue(); }
@@ -90,18 +93,39 @@ public class IntField extends TextField {
                     return;
                 }
 
+                if (newValue.length() > maxLength) {
+                    textProperty().set(oldValue);
+                    value.set(Integer.parseInt(textProperty().get()));
+                    return;
+                }
+
                 final int intValue = Integer.parseInt(newValue);
 
                 if (intField.minValue > intValue ) {
                     textProperty().setValue(String.valueOf(intField.minValue));
                 }
                 else if(intValue > intField.maxValue){
-                    textProperty().setValue(String.valueOf(intField.maxValue));
+                    textProperty().setValue((String.valueOf( intField.maxValue)));
 
                 }
 
                 value.set(Integer.parseInt(textProperty().get()));
             }
         });
+
+//        this.focusedProperty().addListener(new ChangeListener<Boolean>() {
+//            @Override
+//            public void changed(ObservableValue ov, Boolean t, Boolean t1) {
+//
+//                Platform.runLater(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if () {
+//                            this.selectAll();
+//                        }
+//                    }
+//                });
+//            }
+//        });
     }
 }
