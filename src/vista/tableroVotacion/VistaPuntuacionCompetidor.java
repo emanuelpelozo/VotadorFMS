@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import modelo.Batalla.FabricaRounds;
 
 public class VistaPuntuacionCompetidor extends HBox {
@@ -29,10 +30,13 @@ public class VistaPuntuacionCompetidor extends HBox {
     }
 
     private void inicializar() {
+        this.nombreCompetidor.setFont(Font.font("Verdana", 15));
         this.getChildren().add(nombreCompetidor);
-        this.setSpacing(20);
+        this.setSpacing(15);
         this.setAlignment(Pos.CENTER);
-
+        this.casillasEspeciales.setAlignment(Pos.CENTER);
+        this.casillasPrincipales.setAlignment(Pos.CENTER);
+//        this.cas
         this.setOnKeyReleased(new VistaPuntuacionCompetidorEventHandler());
 
     }
@@ -90,7 +94,8 @@ public class VistaPuntuacionCompetidor extends HBox {
         ptaEscena.setOnKeyReleasedParaCasilla(new
                 CasilleroEventHandler("P.esc",nombreCompetidor, this.nombreRound));
 
-        this.getChildren().addAll(flow,skill,ptaEscena, this.puntajeAcumuladoRound);
+        this.casillasEspeciales.getChildren().addAll(flow,skill,ptaEscena);
+        this.getChildren().addAll(this.casillasEspeciales, this.puntajeAcumuladoRound);
     }
 
     public String getCompetidor(){

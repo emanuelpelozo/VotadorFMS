@@ -62,4 +62,24 @@
     -fx-pref-height: 20;
 }
 
+.vista-puntaje {
+   -fx-background-color: grey;
+
+}
+
+.casilla-puntaje {
+    -fx-font-family: "Quicksand";
+    -fx-padding: 1,1,1,1;
+    -fx-border-color: #1a1aff;
+    -fx-border-width: 1;
+    -fx-border-radius: 1;
+    -fx-border: gone;
+    -fx-background-color: white;
+    -fx-text-fill: green;
+}
+
+.casillero {
+    -fx-border-color: black;
+}
+
 

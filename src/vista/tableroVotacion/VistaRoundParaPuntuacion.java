@@ -31,7 +31,7 @@ public class VistaRoundParaPuntuacion extends VBox {
 
     public void inciarParaCantidadDeRounds(int cantRounds){
 
-        this.vistaCompetidor1.inicializarParaCantRounds(cantRounds, 2);
+        this.vistaCompetidor1.inicializarParaCantRounds(cantRounds, 1);
         this.vistaCompetidor2.inicializarParaCantRounds(cantRounds, 2);
     }
 

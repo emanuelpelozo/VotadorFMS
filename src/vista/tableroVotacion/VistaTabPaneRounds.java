@@ -61,6 +61,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
     private void agregarVistaEnContenedorRound(String nombreRound, int cantEntradas, HBox contenedorRound){
 
         contenedorRound.setSpacing(20);
+        contenedorRound.setAlignment(Pos.CENTER);
 
         VistaRoundParaPuntuacion vista = new VistaRoundParaPuntuacion(nombreRound,
                 app.getCompetidorQueAtaca(), app.getCompetidorQueResponde());
@@ -88,6 +89,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
 
     private void agregarVistasEnTab(Tab tab, HBox contenedorRound) {
         VBox vistaTab = new VBox();
+        vistaTab.getStyleClass().add("vista-puntaje");
         VistaPuntajeTotal vistaPuntaje = new VistaPuntajeTotal(app.getCompetidorQueAtaca(), app.getCompetidorQueResponde());
         vistaTab.setSpacing(10);
         vistaTab.setAlignment(Pos.CENTER);

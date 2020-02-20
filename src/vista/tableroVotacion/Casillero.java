@@ -30,16 +30,18 @@ public class Casillero extends VBox {
     private void inicializar() {
         this.getChildren().addAll(this.nombre, this.casilla);
         this.setAlignment(Pos.CENTER);
-        this.setSpacing(2);
-
+//        this.setSpacing(2);
+        this.casilla.getStyleClass().add("casilla-puntaje");
+        this.nombre.setFont(Font.font("Verdana", 10));
+        this.getStyleClass().add("casillero");
 //        this.casilla
     }
 
 
     private void estilizarCasilla() {
-        this.casilla.setMaxWidth(25);
-        this.casilla.setMaxHeight(25);
-        this.casilla.setFont(Font.font("Verdana", 10));
+        this.casilla.setMaxWidth(20);
+        this.casilla.setMaxHeight(20);
+//        this.casilla.setFont(Font.font("Verdana", 10));
 
     }
 
