@@ -1,4 +1,4 @@
-package vista;
+package vista.tableroVotacion;
 
 import com.jfoenix.controls.JFXTabPane;
 import javafx.scene.control.Tab;
@@ -30,6 +30,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
         this.tabPalabras = new Tab();
         HBox contenedorRound = new HBox();
         this.iniciarTabPalabras(contenedorRound, tabPalabras);
+
 
         this.tabTematicas = new Tab();
         contenedorRound = new HBox();

@@ -2,17 +2,18 @@ package controlador;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import modelo.FormatoFMS;
-import vista.tableroVotacion.CasilleroAcumulador;
 import vista.tableroVotacion.VistaPuntuacionCompetidor;
 import vista.tableroVotacion.VistaRoundParaPuntuacion;
 
-public class VistaPuntuacionCompetidorEventHandler implements EventHandler<KeyEvent> {
 
+public class VistaPuntuacionCompetidorEventHandlerMouse implements EventHandler<MouseEvent> {
     @Override
-    public void handle(KeyEvent keyEvent) {
+    public void handle(MouseEvent mouseEvent) {
+
         FormatoFMS app = FormatoFMS.getInstance();
-        VistaPuntuacionCompetidor vistaPuntuacionCompetidor = (VistaPuntuacionCompetidor) keyEvent.getSource();
+        VistaPuntuacionCompetidor vistaPuntuacionCompetidor = (VistaPuntuacionCompetidor) mouseEvent.getSource();
         VistaRoundParaPuntuacion vistaRound = (VistaRoundParaPuntuacion) vistaPuntuacionCompetidor.getParent();
         app.setRound(vistaRound.getNombreRound());
 

@@ -1,5 +1,6 @@
 package modelo;
 
+import javafx.scene.control.Label;
 import modelo.Batalla.Batalla;
 import modelo.Batalla.Rounds.ExcepcionRoundSinAnterior;
 import modelo.Batalla.Rounds.ExcepcionRoundSinSiguiente;
@@ -111,5 +112,13 @@ public class FormatoFMS {
 
     public String getPais() {
         return this.pais;
+    }
+
+    public void setRound(String nombreRound) {
+        this.batalla.setRound(nombreRound);
+    }
+
+    public void bonificarEntradaRoundActual(int nroPatron, String nombreCompetidor) {
+        this.batalla.bonificarEntradaRoundActual(nroPatron, nombreCompetidor);
     }
 }

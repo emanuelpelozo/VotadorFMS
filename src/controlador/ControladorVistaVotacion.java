@@ -1,21 +1,16 @@
 package controlador;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import modelo.Batalla.FabricaRounds;
 import modelo.FormatoFMS;
-import vista.VistaTabPaneRounds;
-import vista.tableroVotacion.VistaRoundParaPuntuacion;
+import vista.tableroVotacion.VistaTabPaneRounds;
 
 import java.io.IOException;
 import java.net.URL;

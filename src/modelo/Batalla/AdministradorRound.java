@@ -3,6 +3,7 @@ package modelo.Batalla;
 import modelo.Batalla.Rounds.ExcepcionRoundSinAnterior;
 import modelo.Batalla.Rounds.ExcepcionRoundSinSiguiente;
 import modelo.Batalla.Rounds.Round;
+import modelo.Batalla.Rounds.RoundBonificable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,5 +84,10 @@ public class AdministradorRound {
 
     public void puntuarPuestaEnEscena(int pjePtaEscena) {
         this.roundActual.puntuarPuestaEnEscena(pjePtaEscena);
+    }
+
+    public void bonificarEntradaRoundActual(int nroPatron) {
+        RoundBonificable round = (RoundBonificable) this.roundActual;
+        round.bonificarEntrada(nroPatron);
     }
 }

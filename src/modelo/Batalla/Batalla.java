@@ -54,7 +54,7 @@ public class Batalla {
     }
 
 
-    private void setRound(String nombreRound) {
+    public void setRound(String nombreRound) {
 
         this.rounds.forEach((competidor, administradorRound) -> administradorRound.setRound(nombreRound));
     }
@@ -63,6 +63,7 @@ public class Batalla {
 
         AdministradorRound administradorRound = this.rounds.get(competidor);
         administradorRound.puntuarPatronNumero(nroPatron, puntaje);
+
     }
 
     public String getNombreRoundActual() {
@@ -155,5 +156,10 @@ public class Batalla {
     public String getCompetidorQueResponde() {
         if (this.getCompetidorQueAtaca() == this.getCompetidor1()) return this.getCompetidor2();
         return this.getCompetidor1();
+    }
+
+    public void bonificarEntradaRoundActual(int nroPatron, String nombreCompetidor) {
+        AdministradorRound administradorRound = this.rounds.get(nombreCompetidor);
+        administradorRound.bonificarEntradaRoundActual(nroPatron);
     }
 }
