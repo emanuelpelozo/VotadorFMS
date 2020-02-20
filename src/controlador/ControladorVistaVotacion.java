@@ -2,11 +2,14 @@ package controlador;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
+import com.jfoenix.controls.behavior.JFXGenericPickerBehavior;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.FormatoFMS;
@@ -23,17 +26,21 @@ public class ControladorVistaVotacion implements Initializable {
     @FXML private JFXToggleButton toggleOpciones;
     @FXML private BorderPane contenedorPrincipal;
     @FXML private JFXButton btnSalir;
+    @FXML private JFXButton btnObtenerResultados;
+    @FXML private StackPane stackVotacion;
     private VistaTabPaneRounds vistaTabPane;
+    @FXML private Label labelGanador;
+    @FXML private VBox vistaResultados;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         this.app = FormatoFMS.getInstance();
         this.vistaTabPane = new VistaTabPaneRounds(app);
 
-        this.contenedorPrincipal.setTop(vistaTabPane);
+        this.vistaResultados.setVisible(false);
+        this.stackVotacion.getChildren().add(vistaTabPane);
 
         this.app.setEasyMode();
-
     }
 
 
@@ -68,6 +75,21 @@ public class ControladorVistaVotacion implements Initializable {
 
         cambioDeEscena.cambiarEscena();
 
+    }
+
+    @FXML
+    private void botonObtenerResultadosClicked(){
+
+        String ganador = app.getGanador();
+        this.labelGanador.setText(ganador);
+        this.stackVotacion.getChildren().remove(vistaTabPane);
+        this.vistaResultados.setVisible(true);
+    }
+
+    @FXML
+    private void botonVolverAPlanillaClicked(){
+        this.stackVotacion.getChildren().add(vistaTabPane);
+        this.vistaResultados.setVisible(false);
     }
 }
 

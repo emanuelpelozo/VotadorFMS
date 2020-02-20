@@ -2,20 +2,18 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
-<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 
 <BorderPane fx:id="contenedorPrincipal" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorVistaVotacion">
    <bottom>
@@ -66,35 +64,28 @@
       </VBox>
    </bottom>
    <top>
-      <JFXTabPane fx:id="tabPane" side="BOTTOM" stylesheets="@stylesheet.css">
-         <tabs>
-            <Tab text="Easy/Hard" />
-            <Tab text="Tematicas">
-               <content>
-                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/easymode_ejemplo.png" />
-                     </image>
-                  </ImageView>
-               </content>
-            </Tab>
-            <Tab text="Deluxe">
-               <content>
-                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/easymode_ejemplo.png" />
-                     </image>
-                  </ImageView>
-               </content>
-            </Tab>
-         </tabs>
-      </JFXTabPane>
+      <StackPane fx:id="stackVotacion">
+         <children>
+            <VBox fx:id="vistaResultados" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="El ganador es : " />
+                  <Label fx:id="labelGanador" text="Label" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton onAction="#botonVolverAPlanillaClicked" text="Volver a planilla" textFill="#691ad0" />
+                        <JFXButton text="Ver estadisticas" textFill="#5634ab" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
    </top>
    <center>
       <HBox alignment="CENTER_LEFT" style="-fx-background-color: #b3cce6;">
          <children>
             <JFXToggleButton fx:id="toggleOpciones" alignment="TOP_LEFT" onAction="#ocultarOpcionesClicked" styleClass="textoSecundario" text="Vista reducida" />
-            <JFXButton ripplerFill="BLACK" styleClass="botonSecundario" text="Obtener resultados" />
+            <JFXButton fx:id="btnObtenerResultados" onAction="#botonObtenerResultadosClicked" ripplerFill="BLACK" styleClass="botonSecundario" text="Obtener resultados" />
          </children>
       </HBox>
    </center>

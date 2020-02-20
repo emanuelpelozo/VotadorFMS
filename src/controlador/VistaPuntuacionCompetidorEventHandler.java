@@ -3,7 +3,6 @@ package controlador;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import modelo.FormatoFMS;
-import vista.tableroVotacion.CasilleroAcumulador;
 import vista.tableroVotacion.VistaPuntuacionCompetidor;
 import vista.tableroVotacion.VistaRoundParaPuntuacion;
 
@@ -17,6 +16,6 @@ public class VistaPuntuacionCompetidorEventHandler implements EventHandler<KeyEv
         app.setRound(vistaRound.getNombreRound());
 
         String competidor = vistaPuntuacionCompetidor.getCompetidor();
-        vistaPuntuacionCompetidor.setPuntaje(app.getPuntajeRoundActualParaCompetidor(competidor));
+        vistaPuntuacionCompetidor.setPuntajeRound(app.getPuntajeRoundActualParaCompetidor(competidor));
     }
 }

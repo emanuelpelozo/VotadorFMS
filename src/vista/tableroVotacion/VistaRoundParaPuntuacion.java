@@ -25,8 +25,8 @@ public class VistaRoundParaPuntuacion extends VBox {
         this.getChildren().addAll(this.nombreRound, this.vistaCompetidor1, this.vistaCompetidor2);
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
-        this.setOnKeyReleased(new VistaParaPuntuacionEventHandlerKey());
-        this.setOnMouseClicked(new VistaPuntuacionCompetidorEventHandlerMouse());
+//        this.setOnKeyReleased(new VistaParaPuntuacionEventHandlerKey());
+//        this.setOnMouseClicked(new VistaPuntuacionCompetidorEventHandlerMouse());
     }
 
     public void inciarParaCantidadDeRounds(int cantRounds){

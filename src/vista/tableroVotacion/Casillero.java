@@ -1,5 +1,6 @@
 package vista.tableroVotacion;
 
+import controlador.CasilleroEventHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -36,8 +37,8 @@ public class Casillero extends VBox {
 
 
     private void estilizarCasilla() {
-        this.casilla.setMaxWidth(30);
-        this.casilla.setMaxHeight(30);
+        this.casilla.setMaxWidth(25);
+        this.casilla.setMaxHeight(25);
         this.casilla.setFont(Font.font("Verdana", 10));
 
     }
@@ -57,4 +58,9 @@ public class Casillero extends VBox {
         }
     }
 
+    public void setOnKeyReleasedParaCasilla(EventHandler eventHandler) {
+        this.casilla.setOnKeyReleased(eventHandler);
+        this.casilla.setOnKeyTyped(eventHandler);
+
+    }
 }

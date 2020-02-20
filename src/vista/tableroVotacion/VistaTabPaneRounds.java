@@ -1,13 +1,15 @@
 package vista.tableroVotacion;
 
 import com.jfoenix.controls.JFXTabPane;
+import controlador.TabEventHandler;
+import controlador.TabPaneEventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import modelo.Batalla.FabricaRounds;
 import modelo.FormatoFMS;
-import vista.tableroVotacion.VistaRoundParaPuntuacion;
 
-import java.util.function.Consumer;
 
 public class VistaTabPaneRounds extends JFXTabPane {
 
@@ -17,6 +19,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
     private Tab tabPersonajes;
     private Tab tabLibre;
     private Tab tabDeluxe;
+
 
     public VistaTabPaneRounds(FormatoFMS app){
 
@@ -48,6 +51,10 @@ public class VistaTabPaneRounds extends JFXTabPane {
         contenedorRound = new HBox();
         this.iniciarTabDeluxe(contenedorRound, tabDeluxe);
 
+//        this.setOnKeyReleased(new TabEventHandler());
+        this.setOnKeyReleased(new TabPaneEventHandler());
+
+
     }
 
 
@@ -75,7 +82,19 @@ public class VistaTabPaneRounds extends JFXTabPane {
         app.setHardMode();
         agregarVistaEnContenedorRound(FabricaRounds.HARD_MODE, FabricaRounds.ENTRADAS_HMODE, contenedorRound);
 
-        tab.setContent(contenedorRound);
+        this.agregarVistasEnTab(tab, contenedorRound);
+
+    }
+
+    private void agregarVistasEnTab(Tab tab, HBox contenedorRound) {
+        VBox vistaTab = new VBox();
+        VistaPuntajeTotal vistaPuntaje = new VistaPuntajeTotal(app.getCompetidorQueAtaca(), app.getCompetidorQueResponde());
+        vistaTab.setSpacing(10);
+        vistaTab.setAlignment(Pos.CENTER);
+
+        vistaTab.getChildren().addAll(contenedorRound, vistaPuntaje);
+        tab.setContent(vistaTab);
+        tab.setOnSelectionChanged(new TabEventHandler());
         this.getTabs().add(tab);
 
     }
@@ -91,8 +110,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
         app.setTematicaVuelta();
         agregarVistaEnContenedorRound(FabricaRounds.TEMATICA_VTA, FabricaRounds.ENTRADAS_TEMATICA, contenedorRound);
 
-        tab.setContent(contenedorRound);
-        this.getTabs().add(tab);
+        this.agregarVistasEnTab(tab, contenedorRound);
 
     }
 
@@ -105,8 +123,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
         app.setPersonajes();
         agregarVistaEnContenedorRound(FabricaRounds.PERSONAJES, FabricaRounds.ENTRADAS_PJES, contenedorRound);
 
-        tab.setContent(contenedorRound);
-        this.getTabs().add(tab);
+        this.agregarVistasEnTab(tab, contenedorRound);
 
     }
 
@@ -122,8 +139,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
         app.setTematicaVuelta();
         agregarVistaEnContenedorRound(FabricaRounds.LIBRE_VTA, FabricaRounds.ENTRADAS_LIBRE, contenedorRound);
 
-        tab.setContent(contenedorRound);
-        this.getTabs().add(tab);
+        this.agregarVistasEnTab(tab, contenedorRound);
 
     }
 
@@ -135,16 +151,8 @@ public class VistaTabPaneRounds extends JFXTabPane {
         app.setDeluxe();
         agregarVistaEnContenedorRound(FabricaRounds.DELUXE, FabricaRounds.ENTRADAS_DELUXE, contenedorRound);
 
-        tab.setContent(contenedorRound);
-        this.getTabs().add(tab);
+        this.agregarVistasEnTab(tab, contenedorRound);
 
     }
-
-//    public void actualizarPuntajesTabActual(int puntaje1, int puntaje2){
-//        Tab tabActual = this.getSelectionModel().getSelectedItem();
-//        HBox contenedorRound = (HBox) tabActual.getContent();
-//
-//        VistaRoundParaPuntuacion contenedorRound.getChildren().get(0);
-//    }
 
 }

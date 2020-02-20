@@ -1,10 +1,9 @@
 package vista.tableroVotacion;
 
-import controlador.VistaPuntuacionCompetidorEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import vista.IntField;
+
 
 public class CasilleroAcumulador extends VBox {
 

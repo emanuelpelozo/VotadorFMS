@@ -29,7 +29,7 @@ public class BonificacionActionEvent implements EventHandler<ActionEvent> {
 
         CheckBox bonificacion = (CheckBox)event.getSource();
         VistaPuntuacionCompetidor vista = (VistaPuntuacionCompetidor) bonificacion.getParent().getParent().getParent();
-        vista.setPuntaje(app.getPuntajeRoundActualParaCompetidor(vista.getCompetidor()));
+        vista.setPuntajeRound(app.getPuntajeRoundActualParaCompetidor(vista.getCompetidor()));
 
     }
 }

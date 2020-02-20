@@ -1,13 +1,10 @@
 package controlador;
 
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import modelo.FormatoFMS;
 import vista.IntField;
-import vista.tableroVotacion.Casillero;
-import vista.tableroVotacion.VistaPuntuacionCompetidor;
 
 
 public class CasilleroEventHandler implements EventHandler<KeyEvent> {
@@ -22,9 +19,11 @@ public class CasilleroEventHandler implements EventHandler<KeyEvent> {
         this.nombreRound = nombreRound;
     }
 
+
+
     @Override
     public void handle(KeyEvent keyEvent) {
-        Casillero casilla = (Casillero) keyEvent.getSource();
+        IntField casilla = (IntField) keyEvent.getSource();
         FormatoFMS app = FormatoFMS.getInstance();
         app.setRound(nombreRound);
 
