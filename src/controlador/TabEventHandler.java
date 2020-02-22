@@ -19,6 +19,7 @@ public class TabEventHandler implements EventHandler<Event> {
 
         int pje1 = app.getPuntajeAcumuladoParaCompetidor(app.getCompetidorQueAtaca());
         int pje2 = app.getPuntajeAcumuladoParaCompetidor(app.getCompetidorQueResponde());
+
         vistaTotal.actualizarPuntajes(pje1,pje2);
 
     }

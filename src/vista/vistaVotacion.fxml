@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane fx:id="contenedorPrincipal" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorVistaVotacion">
    <bottom>
       <VBox fx:id="vistaOpciones" alignment="CENTER" fillWidth="false" spacing="20.0" style="-fx-background-color: ffa64d;" BorderPane.alignment="TOP_LEFT">
@@ -22,8 +21,8 @@
             <Separator halignment="RIGHT" prefHeight="0.0" prefWidth="570.0" valignment="TOP" />
             <HBox spacing="10.0">
                <children>
-                  <JFXRadioButton styleClass="textoSecundario" text="Ocultar sumatoria parcial" />
-                  <JFXRadioButton styleClass="textoSecundario" text="Ocultar sumatoria parcial" />
+                  <JFXRadioButton fx:id="radioButtonSumRound" onAction="#ocultarSumatoriaRoundClicked" styleClass="textoSecundario" text="Ocultar sumatoria Round" />
+                  <JFXRadioButton fx:id="radioButtonSumTotal" onAction="#ocultarSumatoriaTotalClicked" styleClass="textoSecundario" text="Ocultar sumatoria Total" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="10.0">
@@ -84,9 +83,21 @@
    <center>
       <HBox alignment="CENTER_LEFT" style="-fx-background-color: #b3cce6;">
          <children>
-            <JFXToggleButton fx:id="toggleOpciones" alignment="TOP_LEFT" onAction="#ocultarOpcionesClicked" styleClass="textoSecundario" text="Vista reducida" />
+            <JFXToggleButton fx:id="toggleOpciones" alignment="TOP_LEFT" onAction="#ocultarOpcionesClicked" size="6.0" styleClass="textoSecundario" text="Vista reducida">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></JFXToggleButton>
             <JFXButton fx:id="btnObtenerResultados" onAction="#botonObtenerResultadosClicked" ripplerFill="BLACK" styleClass="botonSecundario" text="Obtener resultados" />
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </HBox>
    </center>
+   <left>
+      <Label text="Dtoke: 50" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Label text="Papo: 40" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>

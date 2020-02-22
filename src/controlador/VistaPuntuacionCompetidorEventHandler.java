@@ -2,7 +2,9 @@ package controlador;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+import modelo.Batalla.FabricaRounds;
 import modelo.FormatoFMS;
+import vista.FMSApp;
 import vista.tableroVotacion.VistaPuntuacionCompetidor;
 import vista.tableroVotacion.VistaRoundParaPuntuacion;
 
@@ -13,6 +15,7 @@ public class VistaPuntuacionCompetidorEventHandler implements EventHandler<KeyEv
         FormatoFMS app = FormatoFMS.getInstance();
         VistaPuntuacionCompetidor vistaPuntuacionCompetidor = (VistaPuntuacionCompetidor) keyEvent.getSource();
         VistaRoundParaPuntuacion vistaRound = (VistaRoundParaPuntuacion) vistaPuntuacionCompetidor.getParent();
+
         app.setRound(vistaRound.getNombreRound());
 
         String competidor = vistaPuntuacionCompetidor.getCompetidor();

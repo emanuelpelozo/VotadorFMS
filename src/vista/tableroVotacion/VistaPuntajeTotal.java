@@ -36,6 +36,14 @@ public class VistaPuntajeTotal extends HBox {
         this.puntajeTotal2.setText(this.competidor2 + ": " + Integer.toString(pje2));
     }
 
+    public void ocultarPuntajes(){
+        this.setVisible(false);
+    }
+
+    public void mostrarPuntajes(){
+        this.setVisible(true);
+    }
+
 
 
 

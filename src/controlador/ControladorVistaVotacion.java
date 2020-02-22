@@ -1,18 +1,22 @@
 package controlador;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXToggleButton;
 import com.jfoenix.controls.behavior.JFXGenericPickerBehavior;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.FormatoFMS;
+import vista.tableroVotacion.VistaPuntajeTotal;
 import vista.tableroVotacion.VistaTabPaneRounds;
 
 import java.io.IOException;
@@ -22,6 +26,8 @@ import java.util.ResourceBundle;
 public class ControladorVistaVotacion implements Initializable {
 
     private FormatoFMS app;
+    private double xOffset = 0;
+    private double yOffset = 0;
     @FXML private VBox vistaOpciones;
     @FXML private JFXToggleButton toggleOpciones;
     @FXML private BorderPane contenedorPrincipal;
@@ -31,6 +37,10 @@ public class ControladorVistaVotacion implements Initializable {
     private VistaTabPaneRounds vistaTabPane;
     @FXML private Label labelGanador;
     @FXML private VBox vistaResultados;
+    @FXML private JFXRadioButton radioButtonSumRound;
+    @FXML private JFXRadioButton radioButtonSumTotal;
+    private VistaPuntajeTotal puntajeTotal1;
+    private VistaPuntajeTotal puntajeTotal2;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -41,6 +51,36 @@ public class ControladorVistaVotacion implements Initializable {
         this.stackVotacion.getChildren().add(vistaTabPane);
 
         this.app.setEasyMode();
+
+        contenedorPrincipal.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        contenedorPrincipal.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage window = (Stage) contenedorPrincipal.getScene().getWindow();
+                window.setX(event.getScreenX() - xOffset);
+                window.setY(event.getScreenY() - yOffset);
+            }
+        });
+
+//        this.puntajeTotal1 = new VistaPuntajeTotal(app.getCompetidorQueAtaca(), app.getCompetidorQueResponde());
+//        this.contenedorPrincipal.setLeft(puntajeTotal1);
+//        this.contenedorPrincipal.setRight(puntajeTotal1);
+
+//        this.contenedorPrincipal.setOnKeyReleased(e->{
+//            BorderPane border = (BorderPane) e.getSource();
+//            VistaPuntajeTotal vistaTotal = (VistaPuntajeTotal) border.getLeft();
+//            int pje1 = app.getPuntajeAcumuladoParaCompetidor(app.getCompetidorQueAtaca());
+//            int pje2 = app.getPuntajeAcumuladoParaCompetidor(app.getCompetidorQueResponde());
+//            vistaTotal.actualizarPuntajes(pje1,pje2);
+//        });
+
+
     }
 
 
@@ -90,6 +130,20 @@ public class ControladorVistaVotacion implements Initializable {
     private void botonVolverAPlanillaClicked(){
         this.stackVotacion.getChildren().add(vistaTabPane);
         this.vistaResultados.setVisible(false);
+    }
+
+    @FXML
+    private void ocultarSumatoriaRoundClicked(){
+//        this.vistaTabPane.ocultarSumatoriaRound();
+    }
+
+    @FXML
+    private void ocultarSumatoriaTotalClicked(){
+        if( !radioButtonSumTotal.isSelected()){
+            this.vistaTabPane.mostrarSumatoriaTotal();
+            return;
+        }
+        this.vistaTabPane.ocultarSumatoriaTotal();
     }
 }
 

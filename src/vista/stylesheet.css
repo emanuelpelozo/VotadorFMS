@@ -30,6 +30,7 @@
 
 }
 
+
 #titulo {
     -fx-font-family: Bombing;
     -fx-font-size: 50px;
@@ -58,8 +59,8 @@
 }
 
 .tab {
-    -fx-pref-width: 131;
     -fx-pref-height: 20;
+    -fx-font-size: 5;
 }
 
 .vista-puntaje {
@@ -82,4 +83,33 @@
     -fx-border-color: black;
 }
 
+.vista-round {
+    -fx-border-color:  #e6b800;
+}
 
+.vista-tablero-competidor{
+    -fx-border-color: #ffffff;
+
+}
+
+.check-box .box {
+
+-fx-background-color: white;
+-fx-border-color:black;
+-fx-border-radius: 2px;
+-fx-padding:  0.01em 0.01em 0.02em 0.02em; ;
+
+}
+
+.check-box:selected .mark {
+
+-fx-background-color: white;
+
+}
+
+.check-box:selected .box {
+
+-fx-background-color: #28a3f4;
+-fx-padding: 0.02em 0.02em 0.03em 0.03em;;
+-fx-border-color: white;
+}

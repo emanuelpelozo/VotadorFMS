@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXTabPane;
 import controlador.TabEventHandler;
 import controlador.TabPaneEventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -51,9 +52,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
         contenedorRound = new HBox();
         this.iniciarTabDeluxe(contenedorRound, tabDeluxe);
 
-//        this.setOnKeyReleased(new TabEventHandler());
-        this.setOnKeyReleased(new TabPaneEventHandler());
-
+//        this.setOnKeyReleased(new TabPaneEventHandler());
 
     }
 
@@ -91,7 +90,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
         VBox vistaTab = new VBox();
         vistaTab.getStyleClass().add("vista-puntaje");
         VistaPuntajeTotal vistaPuntaje = new VistaPuntajeTotal(app.getCompetidorQueAtaca(), app.getCompetidorQueResponde());
-        vistaTab.setSpacing(10);
+        vistaTab.setSpacing(5);
         vistaTab.setAlignment(Pos.CENTER);
 
         vistaTab.getChildren().addAll(contenedorRound, vistaPuntaje);
@@ -157,4 +156,15 @@ public class VistaTabPaneRounds extends JFXTabPane {
 
     }
 
+    public void ocultarSumatoriaTotal() {
+        VBox vistaTab = (VBox) this.getSelectionModel().getSelectedItem().getContent();
+        VistaPuntajeTotal vistaPuntaje = (VistaPuntajeTotal) vistaTab.getChildren().get(1);
+        vistaPuntaje.ocultarPuntajes();
+    }
+
+    public void mostrarSumatoriaTotal(){
+        VBox vistaTab = (VBox) this.getSelectionModel().getSelectedItem().getContent();
+        VistaPuntajeTotal vistaPuntaje = (VistaPuntajeTotal) vistaTab.getChildren().get(1);
+        vistaPuntaje.mostrarPuntajes();
+    }
 }

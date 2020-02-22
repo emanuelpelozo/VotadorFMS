@@ -1,5 +1,7 @@
 package vista.tableroVotacion;
 
+import com.sun.javafx.tk.FontLoader;
+import com.sun.javafx.tk.Toolkit;
 import controlador.BonificacionActionEvent;
 import controlador.CasilleroEventHandler;
 import controlador.VistaPuntuacionCompetidorEventHandler;
@@ -30,15 +32,16 @@ public class VistaPuntuacionCompetidor extends HBox {
     }
 
     private void inicializar() {
-        this.nombreCompetidor.setFont(Font.font("Verdana", 15));
+        this.nombreCompetidor.setFont(Font.font("Verdana", 12));
+//        this.nombreCompetidor.setMinWidth(125);
+        this.nombreCompetidor.setAlignment(Pos.CENTER_RIGHT);
         this.getChildren().add(nombreCompetidor);
         this.setSpacing(15);
         this.setAlignment(Pos.CENTER);
         this.casillasEspeciales.setAlignment(Pos.CENTER);
         this.casillasPrincipales.setAlignment(Pos.CENTER);
-//        this.cas
         this.setOnKeyReleased(new VistaPuntuacionCompetidorEventHandler());
-
+        this.getStyleClass().add("vista-tablero-competidor");
     }
 
     public void inicializarParaCantRounds(int cantRounds, int nroCompetidor) {
@@ -107,4 +110,11 @@ public class VistaPuntuacionCompetidor extends HBox {
         this.puntajeAcumuladoRound.setPuntaje(puntaje);
     }
 
+    public void alinearTamañoNombreCompetidor(String nombreOtroCompetidor){
+        if(nombreOtroCompetidor.length() > this.nombreCompetidor.getText().length()){
+            this.nombreCompetidor.setMinWidth(nombreOtroCompetidor.length() * 8.5);
+            return;
+        }
+        this.nombreCompetidor.setMinWidth(this.nombreCompetidor.getText().length() * 8.5);
+    }
 }
