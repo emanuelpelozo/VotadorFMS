@@ -1,5 +1,6 @@
 package vista;
 
+import com.jfoenix.controls.JFXTextField;
 import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
@@ -10,7 +11,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
-public class IntField extends TextField {
+public class IntField extends JFXTextField{
     final private IntegerProperty value;
     final private int minValue;
     final private int maxValue;

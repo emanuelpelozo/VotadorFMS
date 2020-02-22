@@ -3,7 +3,6 @@ package controlador;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXToggleButton;
-import com.jfoenix.controls.behavior.JFXGenericPickerBehavior;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,19 +27,30 @@ public class ControladorVistaVotacion implements Initializable {
     private FormatoFMS app;
     private double xOffset = 0;
     private double yOffset = 0;
-    @FXML private VBox vistaOpciones;
-    @FXML private JFXToggleButton toggleOpciones;
-    @FXML private BorderPane contenedorPrincipal;
-    @FXML private JFXButton btnSalir;
-    @FXML private JFXButton btnObtenerResultados;
+
+    @FXML
+    private VBox vistaOpciones;
+    @FXML
+    private JFXToggleButton toggleOpciones;
+    @FXML
+    private BorderPane contenedorPrincipal;
+    @FXML
+    private JFXButton btnSalir;
+    @FXML
+    private JFXButton btnObtenerResultados;
     @FXML private StackPane stackVotacion;
     private VistaTabPaneRounds vistaTabPane;
-    @FXML private Label labelGanador;
-    @FXML private VBox vistaResultados;
-    @FXML private JFXRadioButton radioButtonSumRound;
-    @FXML private JFXRadioButton radioButtonSumTotal;
+    @FXML
+    private Label labelGanador;
+    @FXML
+    private VBox vistaResultados;
+    @FXML
+    private JFXRadioButton radioButtonSumRound;
+    @FXML
+    private JFXRadioButton radioButtonSumTotal;
     private VistaPuntajeTotal puntajeTotal1;
     private VistaPuntajeTotal puntajeTotal2;
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -68,6 +78,8 @@ public class ControladorVistaVotacion implements Initializable {
             }
         });
 
+        this.vistaTabPane.setOnKeyReleased(new TabPaneEventHandler());
+
 //        this.puntajeTotal1 = new VistaPuntajeTotal(app.getCompetidorQueAtaca(), app.getCompetidorQueResponde());
 //        this.contenedorPrincipal.setLeft(puntajeTotal1);
 //        this.contenedorPrincipal.setRight(puntajeTotal1);
@@ -85,11 +97,11 @@ public class ControladorVistaVotacion implements Initializable {
 
 
     @FXML
-    private void ocultarOpcionesClicked(ActionEvent event){
+    private void ocultarOpcionesClicked(ActionEvent event) {
 
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        if (this.toggleOpciones.isSelected()){
+        if (this.toggleOpciones.isSelected()) {
             this.contenedorPrincipal.setBottom(null);
             window.sizeToScene();
             return;
@@ -101,7 +113,7 @@ public class ControladorVistaVotacion implements Initializable {
 
 
     @FXML
-    private void botonSalirClicked(ActionEvent event){
+    private void botonSalirClicked(ActionEvent event) {
 
         Stage window = (Stage) this.btnSalir.getScene().getWindow();
         window.close();
@@ -110,7 +122,7 @@ public class ControladorVistaVotacion implements Initializable {
 
     @FXML
     private void botonNuevaBatallaClicked(ActionEvent event) throws IOException {
-       CambioDeEscena cambioDeEscena = new CambioDeEscena("../vista/vistaPrincipal.fxml",
+        CambioDeEscena cambioDeEscena = new CambioDeEscena("../vista/vistaPrincipal.fxml",
                 (Node) event.getSource());
 
         cambioDeEscena.cambiarEscena();
@@ -118,7 +130,7 @@ public class ControladorVistaVotacion implements Initializable {
     }
 
     @FXML
-    private void botonObtenerResultadosClicked(){
+    private void botonObtenerResultadosClicked() {
 
         String ganador = app.getGanador();
         this.labelGanador.setText(ganador);
@@ -127,23 +139,27 @@ public class ControladorVistaVotacion implements Initializable {
     }
 
     @FXML
-    private void botonVolverAPlanillaClicked(){
+    private void botonVolverAPlanillaClicked() {
         this.stackVotacion.getChildren().add(vistaTabPane);
         this.vistaResultados.setVisible(false);
     }
 
     @FXML
-    private void ocultarSumatoriaRoundClicked(){
-//        this.vistaTabPane.ocultarSumatoriaRound();
+    private void ocultarSumatoriaRoundClicked() {
+        if (this.radioButtonSumRound.isSelected()) {
+            this.vistaTabPane.ocultarSumatoriaRound();
+            return;
+        }
+        this.vistaTabPane.mostrarSumatoriaRound();
     }
 
     @FXML
-    private void ocultarSumatoriaTotalClicked(){
-        if( !radioButtonSumTotal.isSelected()){
+    private void ocultarSumatoriaTotalClicked() {
+        if (radioButtonSumTotal.isSelected()) {
+            this.vistaTabPane.ocultarSumatoriaTotal();
+        } else {
             this.vistaTabPane.mostrarSumatoriaTotal();
-            return;
         }
-        this.vistaTabPane.ocultarSumatoriaTotal();
     }
 }
 

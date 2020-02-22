@@ -14,6 +14,7 @@ public class VistaPuntajeTotal extends HBox {
 
     public VistaPuntajeTotal(String competidor1, String competidor2){
 
+
         this.competidor1 = competidor1;
         this.competidor2 = competidor2;
         this.iniciarLabels();

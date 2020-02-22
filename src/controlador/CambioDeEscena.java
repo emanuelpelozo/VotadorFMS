@@ -26,9 +26,6 @@ public class CambioDeEscena {
         window.setScene(vistaScene);
     }
 
-    public Parent getParent(){
-        return this.vistaParent;
-    }
 
 
 }

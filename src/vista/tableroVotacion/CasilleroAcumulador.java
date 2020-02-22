@@ -25,7 +25,7 @@ public class CasilleroAcumulador extends VBox {
         this.getChildren().addAll(this.titulo, this.puntaje);
         this.setAlignment(Pos.CENTER);
         this.setSpacing(2);
-
+        this.getStyleClass().add("casillero-acumulador");
     }
 
     public void setPuntaje(int puntaje) {

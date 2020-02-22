@@ -121,4 +121,12 @@ public class FormatoFMS {
     public void bonificarEntradaRoundActual(int nroPatron, String nombreCompetidor) {
         this.batalla.bonificarEntradaRoundActual(nroPatron, nombreCompetidor);
     }
+
+    public String getCompetidor1() {
+        return this.batalla.getCompetidor1();
+    }
+
+    public String getCompetidor2() {
+        return this.batalla.getCompetidor2();
+    }
 }
