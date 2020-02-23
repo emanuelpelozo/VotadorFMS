@@ -11,7 +11,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class FMSApp extends Application {
+public class Main extends Application {
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -31,7 +31,7 @@ public class FMSApp extends Application {
         primaryStage.setScene(new Scene(root));
 
 
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+//        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
         primaryStage.sizeToScene();
 

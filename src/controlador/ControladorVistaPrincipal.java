@@ -1,6 +1,5 @@
 package controlador;
 
-import animatefx.animation.Pulse;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,11 +7,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import modelo.FormatoFMS;
 import vista.AlertaBatalla;
 
@@ -24,33 +27,42 @@ public class ControladorVistaPrincipal implements Initializable {
 
     private String pais;
 
-
-    @FXML private VBox vistaConfiguracion;
+    @FXML private BorderPane contenedorPrincipal;
+    @FXML private VBox vistaSeleccion;
     private VBox vistaImagenCompetencia;
+    @FXML private VBox vistaInicial;
+    @FXML private Button btnNuevaBatalla;
     @FXML private Label labelSeleccionPais;
-    @FXML private JFXTextField txtFieldMC1;
-    @FXML private JFXTextField txtFieldMC2;
+    @FXML private TextField txtFieldMC1;
+    @FXML private TextField txtFieldMC2;
     @FXML private ImageView imgFMS;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String prompTextField = "Ingrese un nombre..";
-        this.vistaConfiguracion.setVisible(false);
+//        this.vistaConfiguracion.setVisible(false);
+        this.contenedorPrincipal.getChildren().remove(vistaSeleccion);
         this.txtFieldMC1.setPromptText(prompTextField);
         this.txtFieldMC2.setPromptText(prompTextField);
 
+        this.vistaInicial.getStyleClass().add("vista-inicial");
+
     }
 
-    public void nuevaBatallaButtonClicked(){
-
-        this.vistaConfiguracion.setVisible(true);
-        this.imgFMS.setVisible(false);
+    @FXML
+    public void nuevaBatallaButtonClicked(ActionEvent event){
+        Stage window = (Stage) this.btnNuevaBatalla.getScene().getWindow();
+        this.contenedorPrincipal.setBottom(vistaSeleccion);
+//        this.vistaConfiguracion.setVisible(true);
+//        this.imgFMS.setVisible(false);
+        window.sizeToScene();
     }
 
+    @FXML
     public void cargarBatallaButtonClicked(){
 
-        this.vistaConfiguracion.setVisible(false);
+        this.vistaSeleccion.setVisible(false);
         this.imgFMS.setVisible(true);
     }
 
@@ -85,7 +97,7 @@ public class ControladorVistaPrincipal implements Initializable {
 
     }
 
-    private void verificarTxtFieldMC(JFXTextField txtFieldMC, int nroCompetidor) {
+    private void verificarTxtFieldMC(TextField txtFieldMC, int nroCompetidor) {
         if(txtFieldMC.getText().isEmpty())
            txtFieldMC.setText("MC" + nroCompetidor);
     }
@@ -108,7 +120,6 @@ public class ControladorVistaPrincipal implements Initializable {
     @FXML
     private void imagenCompetenciaClicked(MouseEvent mouseEvent){
         vistaImagenCompetencia = (VBox) mouseEvent.getSource();
-        new Pulse(vistaImagenCompetencia).play();
         ObservableList<Node> children = vistaImagenCompetencia.getChildren();
         children.forEach(node -> {
             if (node instanceof Label) {

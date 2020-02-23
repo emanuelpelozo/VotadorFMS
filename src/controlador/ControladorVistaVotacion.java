@@ -80,19 +80,6 @@ public class ControladorVistaVotacion implements Initializable {
 
         this.vistaTabPane.setOnKeyReleased(new TabPaneEventHandler());
 
-//        this.puntajeTotal1 = new VistaPuntajeTotal(app.getCompetidorQueAtaca(), app.getCompetidorQueResponde());
-//        this.contenedorPrincipal.setLeft(puntajeTotal1);
-//        this.contenedorPrincipal.setRight(puntajeTotal1);
-
-//        this.contenedorPrincipal.setOnKeyReleased(e->{
-//            BorderPane border = (BorderPane) e.getSource();
-//            VistaPuntajeTotal vistaTotal = (VistaPuntajeTotal) border.getLeft();
-//            int pje1 = app.getPuntajeAcumuladoParaCompetidor(app.getCompetidorQueAtaca());
-//            int pje2 = app.getPuntajeAcumuladoParaCompetidor(app.getCompetidorQueResponde());
-//            vistaTotal.actualizarPuntajes(pje1,pje2);
-//        });
-
-
     }
 
 
@@ -132,8 +119,8 @@ public class ControladorVistaVotacion implements Initializable {
     @FXML
     private void botonObtenerResultadosClicked() {
 
-        String ganador = app.getGanador();
-        this.labelGanador.setText(ganador);
+//        String ganador = app.getGanador();
+//        this.labelGanador.setText(ganador);
         this.stackVotacion.getChildren().remove(vistaTabPane);
         this.vistaResultados.setVisible(true);
     }
@@ -142,6 +129,8 @@ public class ControladorVistaVotacion implements Initializable {
     private void botonVolverAPlanillaClicked() {
         this.stackVotacion.getChildren().add(vistaTabPane);
         this.vistaResultados.setVisible(false);
+        Stage window = (Stage) this.contenedorPrincipal.getScene().getWindow();
+        window.sizeToScene();
     }
 
     @FXML

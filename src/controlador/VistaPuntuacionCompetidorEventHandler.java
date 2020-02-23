@@ -2,9 +2,7 @@ package controlador;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
-import modelo.Batalla.FabricaRounds;
 import modelo.FormatoFMS;
-import vista.FMSApp;
 import vista.tableroVotacion.VistaPuntuacionCompetidor;
 import vista.tableroVotacion.VistaRoundParaPuntuacion;
 

@@ -29,6 +29,7 @@ public class VistaPuntajeTotal extends HBox {
         this.getChildren().addAll(this.puntajeTotal1, this.puntajeTotal2);
         this.setSpacing(20);
         this.setAlignment(Pos.CENTER);
+        this.getStyleClass().add("casillero-acumulador");
     }
 
     public void actualizarPuntajes(int pje1, int pje2){

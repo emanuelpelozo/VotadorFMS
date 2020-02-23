@@ -1,13 +1,3 @@
-@font-face {
-    src: url("../resources/fonts/Charnego.otf");
-
-}
-
-@font-face {
-
-    src: url("../resources/fonts/TRON.TTF");
-}
-
 
 @font-face {
     src: url("../resources/fonts/Painterz.ttf");
@@ -20,23 +10,45 @@
 
 
 
-.anchor {
+.vista-inicial {
     -fx-background-image: url("../resources/images/microfono_old_school.jpg");
-    -fx-background-size: 800 400;
+    -fx-background-size: 600 300;
+}
 
+.vista-seleccion {
+   -fx-font-family: Painterz;
+   -fx-background-color:
+         #090a0c,
+         radial-gradient(focus-distance 0% , center 50% 50% , radius 55%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+}
+.label {
+   -fx-font-family: Painterz;
+
+   -fx-text-fill: linear-gradient( #e6f2ff, #d0d0d0);
 }
 
 
 #titulo {
     -fx-font-family: Bombing;
     -fx-font-size: 50px;
+    -fx-text-fill: white;
 }
 
 .botonPrincipal {
     -fx-font-family: Bombing;
     -fx-font-size: 25px;
-    -fx-background-color: #000033;
-
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-padding: 10 20 10 20;
 }
 
 .textoSecundario{
@@ -46,8 +58,22 @@
 
 .botonSecundario{
     -fx-font-family: Painterz;
-    -fx-background-color: #99ff99;
+    -fx-background-color: #660066;
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+
 }
+
+.button {
+    -fx-font-family: Painterz;
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-padding: 10 20 10 20;
+
+}
+
 
 .botonVotacion {
 
@@ -62,13 +88,15 @@
 
 .casillero-acumulador {
     -fx-font-size: 12px;
-    -fx-background-color:   #b3cce6;
-    -fx-background-radius: 5px;
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
 }
 
-
 .vista-puntaje {
-   -fx-background-color:  #a3c2c2;
+  -fx-background-color:
+          radial-gradient(focus-distance 0% , center 50% 50% , radius 55%, rgba(49,98,125,1) 0%, rgba(19,28,34,1) 100%);
+
+
 }
 
 

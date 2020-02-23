@@ -29,7 +29,7 @@ public class Casillero extends VBox {
         this.getChildren().addAll(this.nombre, this.casilla);
 //        this.getChildren().addAll( this.casilla);
 
-        this.setAlignment(Pos.CENTER);
+        this.setAlignment(Pos.TOP_CENTER);
 //        this.setSpacing(2);
         this.casilla.getStyleClass().add("casilla-puntaje");
         this.casilla.setAlignment(Pos.CENTER);
