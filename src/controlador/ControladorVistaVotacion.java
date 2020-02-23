@@ -11,10 +11,13 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import modelo.Batalla.FabricaRounds;
 import modelo.FormatoFMS;
+import vista.resultados.VistaResumenRound;
 import vista.tableroVotacion.VistaPuntajeTotal;
 import vista.tableroVotacion.VistaTabPaneRounds;
 
@@ -121,8 +124,51 @@ public class ControladorVistaVotacion implements Initializable {
 
 //        String ganador = app.getGanador();
 //        this.labelGanador.setText(ganador);
+        HBox resumenBatalla = this.crearResumenBatalla();
         this.stackVotacion.getChildren().remove(vistaTabPane);
+        this.vistaResultados.getChildren().add(1, resumenBatalla);
         this.vistaResultados.setVisible(true);
+        this.labelGanador.setText("El ganador es: " + app.getGanador());
+    }
+
+    private HBox crearResumenBatalla() {
+        HBox resumenBatalla = new HBox();
+        resumenBatalla.setSpacing(10);
+
+        this.crearVistaResumenRound(
+                FabricaRounds.EASY_MODE, resumenBatalla);
+
+        this.crearVistaResumenRound(
+                FabricaRounds.HARD_MODE, resumenBatalla);
+
+        this.crearVistaResumenRound(
+                FabricaRounds.TEMATICA_IDA, resumenBatalla);
+        this.crearVistaResumenRound(
+                FabricaRounds.TEMATICA_VTA, resumenBatalla);
+        this.crearVistaResumenRound(
+                FabricaRounds.PERSONAJES, resumenBatalla);
+        this.crearVistaResumenRound(
+                FabricaRounds.LIBRE_IDA, resumenBatalla);
+        this.crearVistaResumenRound(
+                FabricaRounds.LIBRE_VTA, resumenBatalla);
+        this.crearVistaResumenRound(
+                FabricaRounds.DELUXE, resumenBatalla);
+
+        return resumenBatalla;
+    }
+
+    private void crearVistaResumenRound(String nombreRound, HBox contenedorResumen) {
+        VistaResumenRound resumen = new VistaResumenRound(nombreRound);
+        app.setRound(nombreRound);
+        int pje1 = app.getPuntajeRoundActualParaCompetidor(app.getCompetidor1());
+        int pje2 = app.getPuntajeRoundActualParaCompetidor(app.getCompetidor2());
+        String ganador = app.getGanadorRoundActual();
+        resumen.setGanador(ganador);
+        resumen.setPuntaje1(pje1);
+        resumen.setPuntaje2(pje2);
+
+        contenedorResumen.getChildren().add(resumen);
+
     }
 
     @FXML

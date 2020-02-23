@@ -55,70 +55,11 @@
             <VBox fx:id="vistaResultados" alignment="CENTER" style="-fx-background-color: grey;">
                <children>
                   <Label text="Resumen de batalla" />
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="ROund" />
-                              <Label text="MC1" />
-                              <Label text="MC2" />
-                              <Separator prefWidth="200.0" />
-                              <Label text="Ganador round" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="ROund" />
-                              <Label text="12" />
-                              <Label text="12" />
-                              <Separator prefWidth="200.0" />
-                              <Label text="Label" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="ROund" />
-                              <Label text="12" />
-                              <Label text="12" />
-                              <Separator prefWidth="200.0" />
-                              <Label text="Label" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="ROund" />
-                              <Label text="12" />
-                              <Label text="12" />
-                              <Separator prefWidth="200.0" />
-                              <Label text="Label" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="ROund" />
-                              <Label text="12" />
-                              <Label text="12" />
-                              <Separator prefWidth="200.0" />
-                              <Label text="Label" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="ROund" />
-                              <Label text="12" />
-                              <Label text="12" />
-                              <Separator prefWidth="200.0" />
-                              <Label text="Label" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <Label prefHeight="34.0" prefWidth="217.0" text="El ganador es : " />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <Label fx:id="labelGanador" prefHeight="34.0" prefWidth="217.0" text="El ganador es : " />
+                  <HBox alignment="CENTER" prefHeight="60.0" spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#botonVolverAPlanillaClicked" text="Volver a planilla" />
-                        <JFXButton text="Volver a planilla" textFill="#691ad0" />
-                        <JFXButton text="Ver estadisticas" textFill="#5634ab" />
+                        <Button mnemonicParsing="false" onAction="#botonVolverAPlanillaClicked" text="ver estadisticas" />
                      </children>
                   </HBox>
                </children>

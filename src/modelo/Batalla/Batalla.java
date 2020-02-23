@@ -162,4 +162,17 @@ public class Batalla {
         AdministradorRound administradorRound = this.rounds.get(nombreCompetidor);
         administradorRound.bonificarEntradaRoundActual(nroPatron);
     }
+
+    public String getGanadorRoundActual() {
+        int puntaje1 = this.getPuntajeAcumuladoEnRoundCompetidor(this.getCompetidor1());
+        int puntaje2 = this.getPuntajeAcumuladoEnRoundCompetidor(this.getCompetidor2());
+
+        if( puntaje1 >= puntaje2 + DIFERENCIA_PARA_GANAR){
+            return this.getCompetidor1();
+        }
+        else if( puntaje2 >= puntaje1 + DIFERENCIA_PARA_GANAR){
+            return this.getCompetidor2();
+        }
+        return REPLICA;
+    }
 }

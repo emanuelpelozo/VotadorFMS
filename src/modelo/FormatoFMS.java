@@ -129,4 +129,8 @@ public class FormatoFMS {
     public String getCompetidor2() {
         return this.batalla.getCompetidor2();
     }
+
+    public String getGanadorRoundActual() {
+        return this.batalla.getGanadorRoundActual();
+    }
 }
