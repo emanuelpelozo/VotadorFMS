@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 public class ControladorVistaPrincipal implements Initializable {
 
-    private String pais;
+    private String pais = "Argentina";
 
     @FXML private BorderPane contenedorPrincipal;
     @FXML private VBox vistaSeleccion;

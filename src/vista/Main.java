@@ -31,7 +31,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
 
 
-//        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
         primaryStage.sizeToScene();
 

@@ -133,4 +133,8 @@ public class FormatoFMS {
     public String getGanadorRoundActual() {
         return this.batalla.getGanadorRoundActual();
     }
+
+    public void setDistanciaMinimaParaReplica(int distancia) {
+        this.batalla.setDistanciaMinimaParaReplica(distancia);
+    }
 }

@@ -8,7 +8,7 @@ public class Batalla {
     private ArrayList<String> competidores;
     private HashMap<String, AdministradorRound> rounds;
     private String competicion;
-    private final int DIFERENCIA_PARA_GANAR = 5;
+    private int DIFERENCIA_PARA_GANAR = 5;
     public static final String REPLICA = "Replica";
 
     public Batalla(){
@@ -174,5 +174,9 @@ public class Batalla {
             return this.getCompetidor2();
         }
         return REPLICA;
+    }
+
+    public void setDistanciaMinimaParaReplica(int distancia) {
+        this.DIFERENCIA_PARA_GANAR = distancia;
     }
 }

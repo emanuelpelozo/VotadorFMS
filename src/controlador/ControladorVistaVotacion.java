@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -15,14 +17,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import modelo.Batalla.Batalla;
 import modelo.Batalla.FabricaRounds;
 import modelo.FormatoFMS;
+import vista.IntField;
 import vista.resultados.VistaResumenRound;
 import vista.tableroVotacion.VistaPuntajeTotal;
 import vista.tableroVotacion.VistaTabPaneRounds;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.cert.PolicyNode;
 import java.util.ResourceBundle;
 
 public class ControladorVistaVotacion implements Initializable {
@@ -31,36 +36,33 @@ public class ControladorVistaVotacion implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
 
-    @FXML
-    private VBox vistaOpciones;
-    @FXML
-    private JFXToggleButton toggleOpciones;
-    @FXML
-    private BorderPane contenedorPrincipal;
-    @FXML
-    private JFXButton btnSalir;
-    @FXML
-    private JFXButton btnObtenerResultados;
+    @FXML private VBox vistaOpciones;
+    @FXML private JFXToggleButton toggleOpciones;
+    @FXML private BorderPane contenedorPrincipal;
+    @FXML private JFXButton btnSalir;
     @FXML private StackPane stackVotacion;
     private VistaTabPaneRounds vistaTabPane;
-    @FXML
-    private Label labelGanador;
-    @FXML
-    private VBox vistaResultados;
-    @FXML
-    private JFXRadioButton radioButtonSumRound;
-    @FXML
-    private JFXRadioButton radioButtonSumTotal;
+    @FXML private Label labelGanador;
+    @FXML private VBox vistaResultados;
+    @FXML private JFXRadioButton radioButtonSumRound;
+    @FXML private JFXRadioButton radioButtonSumTotal;
     private VistaPuntajeTotal puntajeTotal1;
     private VistaPuntajeTotal puntajeTotal2;
-
+    @FXML private HBox botoneraResultados;
+    @FXML private HBox contenedorDistMinima;
+    private IntField casillaDistMinima;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         this.app = FormatoFMS.getInstance();
+
+        this.stackVotacion.setPrefSize(700,200);
+        this.stackVotacion.getStyleClass().add("vista-puntaje");
         this.vistaTabPane = new VistaTabPaneRounds(app);
 
+        this.vistaResultados.getChildren().add(1, new HBox());
         this.vistaResultados.setVisible(false);
+
         this.stackVotacion.getChildren().add(vistaTabPane);
 
         this.app.setEasyMode();
@@ -82,7 +84,19 @@ public class ControladorVistaVotacion implements Initializable {
         });
 
         this.vistaTabPane.setOnKeyReleased(new TabPaneEventHandler());
+        this.inicializarCasillaDistMinima();
 
+    }
+
+    private void inicializarCasillaDistMinima() {
+        this.casillaDistMinima = new IntField(0,9,5);
+        this.casillaDistMinima.setMaxSize(15,15);
+        this.casillaDistMinima.getStyleClass().add("casilla-puntaje");
+        this.casillaDistMinima.setAlignment(Pos.CENTER);
+        this.contenedorDistMinima.getChildren().add(casillaDistMinima);
+        this.casillaDistMinima.setOnKeyTyped(e->{
+            app.setDistanciaMinimaParaReplica(casillaDistMinima.getValue());
+        });
     }
 
 
@@ -122,19 +136,40 @@ public class ControladorVistaVotacion implements Initializable {
     @FXML
     private void botonObtenerResultadosClicked() {
 
-//        String ganador = app.getGanador();
-//        this.labelGanador.setText(ganador);
         HBox resumenBatalla = this.crearResumenBatalla();
+        resumenBatalla.setAlignment(Pos.CENTER);
         this.stackVotacion.getChildren().remove(vistaTabPane);
-        this.vistaResultados.getChildren().add(1, resumenBatalla);
+        this.vistaResultados.getChildren().set(1, resumenBatalla);
         this.vistaResultados.setVisible(true);
+        this.establecerVistaGanador();
+    }
+
+    private void establecerVistaGanador() {
+        String ganador = app.getGanador();
         this.labelGanador.setText("El ganador es: " + app.getGanador());
+        if(ganador == Batalla.REPLICA){
+            this.agregarBotonReplica();
+        }
+    }
+
+    private void agregarBotonReplica() {
+        Button btnReplica = new Button("Ir a replica");
+        this.botoneraResultados.getChildren().add(btnReplica);
+        btnReplica.setOnAction(e->{
+            this.botoneraResultados.getChildren().remove(btnReplica);
+            this.vistaTabPane.agregarTabReplica();
+        });
+        
     }
 
     private HBox crearResumenBatalla() {
         HBox resumenBatalla = new HBox();
         resumenBatalla.setSpacing(10);
 
+        VBox etiquetas = new VBox(new Label("Round: "),
+                new Label(app.getCompetidor1()), new Label(app.getCompetidor2()));
+
+        resumenBatalla.getChildren().add(etiquetas);
         this.crearVistaResumenRound(
                 FabricaRounds.EASY_MODE, resumenBatalla);
 
@@ -163,7 +198,7 @@ public class ControladorVistaVotacion implements Initializable {
         int pje1 = app.getPuntajeRoundActualParaCompetidor(app.getCompetidor1());
         int pje2 = app.getPuntajeRoundActualParaCompetidor(app.getCompetidor2());
         String ganador = app.getGanadorRoundActual();
-        resumen.setGanador(ganador);
+//        resumen.setGanador(ganador);
         resumen.setPuntaje1(pje1);
         resumen.setPuntaje2(pje2);
 

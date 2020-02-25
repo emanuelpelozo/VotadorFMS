@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modelo.Batalla.FabricaRounds;
@@ -27,6 +28,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
     public VistaTabPaneRounds(FormatoFMS app){
 
         this.app = app ;
+        this.getStyleClass().add("jfx-tab-pane");
         this.competidor1 = app.getCompetidor1();
         this.competidor2 = app.getCompetidor2();
         this.iniciarTabs();
@@ -159,6 +161,15 @@ public class VistaTabPaneRounds extends JFXTabPane {
 
     }
 
+    private void iniciarTabReplica(HBox contenedorRound, Tab tab) {
+        String textoTab = "Replica";
+        tab.setText(textoTab);
+
+//        app.setReplica();
+        agregarVistaEnContenedorRound(textoTab, 6, contenedorRound);
+        this.agregarVistasEnTab(tab, contenedorRound);
+    }
+
     public void ocultarSumatoriaTotal() {
         VBox vistaTab = (VBox) this.getSelectionModel().getSelectedItem().getContent();
         VistaPuntajeTotal vistaPuntaje = (VistaPuntajeTotal) vistaTab.getChildren().get(1);
@@ -199,4 +210,11 @@ public class VistaTabPaneRounds extends JFXTabPane {
     }
 
 
+    public void agregarTabReplica() {
+
+        Tab tabReplica = new Tab();
+        HBox contenedorRound = new HBox();
+        this.iniciarTabReplica(contenedorRound, tabReplica);
+
+    }
 }

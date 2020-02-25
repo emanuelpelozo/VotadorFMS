@@ -15,19 +15,19 @@
 
 <BorderPane fx:id="contenedorPrincipal" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorVistaVotacion">
    <bottom>
-      <VBox fx:id="vistaOpciones" alignment="CENTER" fillWidth="false" spacing="20.0" style="-fx-background-color: ffa64d;" BorderPane.alignment="TOP_LEFT">
+      <VBox fx:id="vistaOpciones" alignment="CENTER" fillWidth="false" spacing="10.0" style="-fx-background-color: grey;" BorderPane.alignment="TOP_LEFT">
          <children>
             <Separator halignment="RIGHT" prefHeight="0.0" prefWidth="570.0" valignment="TOP" />
             <HBox spacing="10.0">
                <children>
-                  <JFXRadioButton fx:id="radioButtonSumRound" onAction="#ocultarSumatoriaRoundClicked" styleClass="textoSecundario" text="Ocultar sumatoria Round" />
-                  <JFXRadioButton fx:id="radioButtonSumTotal" onAction="#ocultarSumatoriaTotalClicked" styleClass="textoSecundario" text="Ocultar sumatoria Total" />
+                  <JFXRadioButton fx:id="radioButtonSumRound" onAction="#ocultarSumatoriaRoundClicked" styleClass="textoSecundario" text="Ocultar sumatoria Round" textFill="#eee8e8" />
+                  <JFXRadioButton fx:id="radioButtonSumTotal" onAction="#ocultarSumatoriaTotalClicked" styleClass="textoSecundario" text="Ocultar sumatoria Total" textFill="#f2e9e9" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" spacing="10.0">
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
+            <HBox fx:id="contenedorDistMinima" alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="Distancia minima para replica" />
+               </children>
             </HBox>
             <Separator halignment="RIGHT" prefHeight="0.0" prefWidth="570.0" valignment="TOP" />
             <ButtonBar>
@@ -52,11 +52,11 @@
    <top>
       <StackPane fx:id="stackVotacion">
          <children>
-            <VBox fx:id="vistaResultados" alignment="CENTER" style="-fx-background-color: grey;">
+            <VBox fx:id="vistaResultados" alignment="CENTER">
                <children>
                   <Label text="Resumen de batalla" />
-                  <Label fx:id="labelGanador" prefHeight="34.0" prefWidth="217.0" text="El ganador es : " />
-                  <HBox alignment="CENTER" prefHeight="60.0" spacing="10.0">
+                  <Label fx:id="labelGanador" text="El ganador es : " />
+                  <HBox fx:id="botoneraResultados" alignment="CENTER" prefHeight="60.0" spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#botonVolverAPlanillaClicked" text="Volver a planilla" />
                         <Button mnemonicParsing="false" onAction="#botonVolverAPlanillaClicked" text="ver estadisticas" />
@@ -68,13 +68,16 @@
       </StackPane>
    </top>
    <center>
-      <HBox alignment="CENTER_LEFT" style="-fx-background-color: #b3cce6;">
+      <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1f1f2e;">
          <children>
-            <JFXToggleButton fx:id="toggleOpciones" alignment="TOP_LEFT" onAction="#ocultarOpcionesClicked" size="6.0" styleClass="textoSecundario" text="Vista reducida">
+            <JFXToggleButton fx:id="toggleOpciones" alignment="TOP_LEFT" onAction="#ocultarOpcionesClicked" prefWidth="150.0" size="6.0" styleClass="textoSecundario" text="Vista reducida" textFill="#e8d4d4">
                <HBox.margin>
                   <Insets />
-               </HBox.margin></JFXToggleButton>
-            <JFXButton fx:id="btnObtenerResultados" onAction="#botonObtenerResultadosClicked" ripplerFill="BLACK" styleClass="botonSecundario" text="Obtener resultados" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </padding></JFXToggleButton>
+            <Button fx:id="btnObtenerResultados" maxHeight="-Infinity" mnemonicParsing="false" onAction="#botonObtenerResultadosClicked" styleClass="boton-secundario" text="Obtener resultados" />
          </children>
          <BorderPane.margin>
             <Insets />

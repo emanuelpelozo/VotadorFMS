@@ -66,11 +66,15 @@
 
 }
 
+.boton-secundario{
+   -fx-padding: 5 10 5 10;
+}
+
 .button {
     -fx-font-family: Painterz;
     -fx-background-radius: 5,4,3,5;
     -fx-background-insets: 0,1,2,0;
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 5 20 5 20;
 
 }
 
@@ -80,11 +84,30 @@
     -fx-font-family: Painterz;
 }
 
-.tab {
-    -fx-pref-height: 20;
-    -fx-font-size: 5;
+
+.jfx-tab-pane *.tab-header-area *.tab-header-background {
+  -fx-background-color:  #1f1f2e;
+}
+
+.jfx-tab-pane {
+  -fx-tab-min-width:80px;/*
+  -fx-tab-max-width:80px;
+  -fx-tab-min-height:20px;
+  -fx-tab-max-height:20px;*/
 
 }
+
+
+.tab {
+/*  -fx-pref-width: 210px;*/
+  -fx-pref-height: 20px;
+  -fx-font-size: 10;
+  -fx-background-color:  #1f1f2e;
+}
+
+/*.tab:selected {
+    -fx-background-color:blue ;
+}*/
 
 .casillero-acumulador {
     -fx-font-size: 12px;
@@ -93,16 +116,23 @@
 }
 
 .vista-puntaje {
+/* -fx-background-color:
+          radial-gradient(focus-distance 0% , center 50% 50% , radius 55%, rgba(49,98,125,1) 0%, rgba(19,28,34,1) 100%);*/
   -fx-background-color:
-          radial-gradient(focus-distance 0% , center 50% 50% , radius 55%, rgba(49,98,125,1) 0%, rgba(19,28,34,1) 100%);
-
-
+          #090a0c,
+          radial-gradient(focus-distance 0% , center 50% 50% , radius 55%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+  /*  -fx-background-image: url("../resources/images/logoFMS.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-attachment: fixed;
+    -fx-background-size: 100 100;*/
 }
 
 
 
 .casilla-puntaje {
     -fx-font-family: "Bookman";
+    -fx-font-size: 11;
     -fx-padding: 1,1,1,1;
 /*    -fx-border-color: #1a1aff;*/
     -fx-border-width: 1;
