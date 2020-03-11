@@ -1,5 +1,3 @@
-package test;
-
 import modelo.Batalla.Rounds.RoundBonificable;
 import org.junit.Before;
 import org.junit.Test;

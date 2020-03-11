@@ -23,7 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/vista/vistaPrincipal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/vistaPrincipal.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/vista/vistaVotacion.fxml"));
 
         primaryStage.setTitle("Formato FMS");

@@ -40,6 +40,7 @@ public class VistaPuntuacionCompetidor extends HBox {
         this.casillasEspeciales.setAlignment(Pos.CENTER);
         this.casillasPrincipales.setAlignment(Pos.CENTER);
         this.setOnKeyReleased(new VistaPuntuacionCompetidorEventHandler());
+        this.setPrefHeight(45);
 //        this.getStyleClass().add("vista-tablero-competidor");
     }
 

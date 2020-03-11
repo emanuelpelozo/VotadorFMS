@@ -16,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import modelo.Batalla.Batalla;
 import modelo.Batalla.FabricaRounds;
@@ -27,7 +28,6 @@ import vista.tableroVotacion.VistaTabPaneRounds;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.cert.PolicyNode;
 import java.util.ResourceBundle;
 
 public class ControladorVistaVotacion implements Initializable {
@@ -36,7 +36,8 @@ public class ControladorVistaVotacion implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
 
-    @FXML private VBox vistaOpciones;
+    @FXML private VBox vistaOpcionesSecundarias;
+    @FXML private VBox vistaOpcionesPrincipales;
     @FXML private JFXToggleButton toggleOpciones;
     @FXML private BorderPane contenedorPrincipal;
     @FXML private JFXButton btnSalir;
@@ -46,26 +47,39 @@ public class ControladorVistaVotacion implements Initializable {
     @FXML private VBox vistaResultados;
     @FXML private JFXRadioButton radioButtonSumRound;
     @FXML private JFXRadioButton radioButtonSumTotal;
-    private VistaPuntajeTotal puntajeTotal1;
-    private VistaPuntajeTotal puntajeTotal2;
     @FXML private HBox botoneraResultados;
     @FXML private HBox contenedorDistMinima;
     private IntField casillaDistMinima;
+    private VistaPuntajeTotal vistaPuntajeTotal;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         this.app = FormatoFMS.getInstance();
 
-        this.stackVotacion.setPrefSize(700,200);
+        this.stackVotacion.setPrefSize(750,160);
         this.stackVotacion.getStyleClass().add("vista-puntaje");
-        this.vistaTabPane = new VistaTabPaneRounds(app);
 
         this.vistaResultados.getChildren().add(1, new HBox());
         this.vistaResultados.setVisible(false);
 
+        this.vistaTabPane = new VistaTabPaneRounds(app);
         this.stackVotacion.getChildren().add(vistaTabPane);
 
         this.app.setEasyMode();
+
+        this.vistaPuntajeTotal = new VistaPuntajeTotal(app.getCompetidor1(), app.getCompetidor2());
+        this.vistaOpcionesPrincipales.getChildren().add(0, vistaPuntajeTotal);
+
+        contenedorPrincipal.setOnKeyReleased( e->{
+            int pje1 = app.getPuntajeAcumuladoParaCompetidor(app.getCompetidor1());
+            int pje2 = app.getPuntajeAcumuladoParaCompetidor(app.getCompetidor2());
+            vistaPuntajeTotal.actualizarPuntajes(pje1,pje2);
+        });
+
+        this.inicializarCasillaDistMinima();
+
+
+
 
         contenedorPrincipal.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -83,8 +97,7 @@ public class ControladorVistaVotacion implements Initializable {
             }
         });
 
-        this.vistaTabPane.setOnKeyReleased(new TabPaneEventHandler());
-        this.inicializarCasillaDistMinima();
+
 
     }
 
@@ -110,7 +123,7 @@ public class ControladorVistaVotacion implements Initializable {
             window.sizeToScene();
             return;
         }
-        this.contenedorPrincipal.setBottom(vistaOpciones);
+        this.contenedorPrincipal.setBottom(vistaOpcionesSecundarias);
         window.sizeToScene();
 
     }
@@ -210,8 +223,7 @@ public class ControladorVistaVotacion implements Initializable {
     private void botonVolverAPlanillaClicked() {
         this.stackVotacion.getChildren().add(vistaTabPane);
         this.vistaResultados.setVisible(false);
-        Stage window = (Stage) this.contenedorPrincipal.getScene().getWindow();
-        window.sizeToScene();
+        this.actualizarStage();
     }
 
     @FXML
@@ -226,10 +238,16 @@ public class ControladorVistaVotacion implements Initializable {
     @FXML
     private void ocultarSumatoriaTotalClicked() {
         if (radioButtonSumTotal.isSelected()) {
-            this.vistaTabPane.ocultarSumatoriaTotal();
-        } else {
-            this.vistaTabPane.mostrarSumatoriaTotal();
-        }
+            this.vistaOpcionesPrincipales.getChildren().remove(vistaPuntajeTotal);
+
+        } else
+            this.vistaOpcionesPrincipales.getChildren().add(0, vistaPuntajeTotal);
+        this.actualizarStage();
+    }
+
+    private void actualizarStage() {
+        Stage window = (Stage) this.contenedorPrincipal.getScene().getWindow();
+        window.sizeToScene();
     }
 }
 

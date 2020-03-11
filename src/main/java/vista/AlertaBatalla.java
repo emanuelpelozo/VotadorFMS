@@ -16,13 +16,13 @@ public class AlertaBatalla extends Alert {
 
     private void configurarAlerta() {
         ImageView image =new ImageView(this.getClass().
-                getResource("../resources/images/microfonos.png").toString());
+                getResource("/images/microfonos.png").toString());
         image.setFitHeight(50);
         image.setFitWidth(50);
         DialogPane dialogPane = this.getDialogPane();
 
-        dialogPane.getStylesheets().add(
-                getClass().getResource("myDialogs.css").toExternalForm());
+//        dialogPane.getStylesheets().add(
+//                getClass().getResource("myDialogs.css").toExternalForm());
 
         dialogPane.setGraphic(image);
     }

@@ -28,9 +28,15 @@ public class Casillero extends VBox {
     private void inicializar() {
         this.getChildren().addAll(this.nombre, this.casilla);
 //        this.getChildren().addAll( this.casilla);
-
+        this.invisibilizarNumeroPatron();
         this.setAlignment(Pos.TOP_CENTER);
 //        this.setSpacing(2);
+    }
+
+    private void invisibilizarNumeroPatron() {
+        if (this.nombre.getText().length() <= 1 ){
+            this.nombre.setVisible(false);
+        }
     }
 
 

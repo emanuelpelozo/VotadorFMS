@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 public class ControladorVistaPrincipal implements Initializable {
 
-    private String pais = "Argentina";
+    private String pais;
 
     @FXML private BorderPane contenedorPrincipal;
     @FXML private VBox vistaSeleccion;
@@ -85,7 +85,7 @@ public class ControladorVistaPrincipal implements Initializable {
         FormatoFMS app = FormatoFMS.getInstance();
         app.iniciarBatallaNuevaEnPais(this.pais, this.txtFieldMC1.getText(), this.txtFieldMC2.getText());
 
-        CambioDeEscena cambioDeEscena = new CambioDeEscena("../vista/vistaVotacion.fxml",
+        CambioDeEscena cambioDeEscena = new CambioDeEscena("/vistaVotacion.fxml",
                 (Node) event.getSource());
 
         cambioDeEscena.cambiarEscena();

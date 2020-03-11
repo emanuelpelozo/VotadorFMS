@@ -1,5 +1,3 @@
-package test;
-
 import modelo.Batalla.Batalla;
 import modelo.Batalla.Rounds.ColeccionDePuntajes;
 import org.junit.Before;

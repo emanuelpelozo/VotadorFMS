@@ -1,5 +1,3 @@
-package test;
-
 import modelo.Batalla.EnlazadorDeRounds;
 import modelo.Batalla.Rounds.ExcepcionRoundSinAnterior;
 import modelo.Batalla.Rounds.ExcepcionRoundSinSiguiente;

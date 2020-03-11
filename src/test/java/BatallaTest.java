@@ -1,5 +1,3 @@
-package test;
-
 import modelo.Batalla.Batalla;
 import modelo.Batalla.FabricaRounds;
 import org.junit.Before;

@@ -2,11 +2,9 @@ package vista.tableroVotacion;
 
 import com.jfoenix.controls.JFXTabPane;
 import controlador.TabEventHandler;
-import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modelo.Batalla.FabricaRounds;
@@ -29,6 +27,8 @@ public class VistaTabPaneRounds extends JFXTabPane {
 
         this.app = app ;
         this.getStyleClass().add("jfx-tab-pane");
+
+
         this.competidor1 = app.getCompetidor1();
         this.competidor2 = app.getCompetidor2();
         this.iniciarTabs();
@@ -36,6 +36,7 @@ public class VistaTabPaneRounds extends JFXTabPane {
     }
 
     private void iniciarTabs() {
+
 
         this.tabPalabras = new Tab();
         HBox contenedorRound = new HBox();
@@ -94,13 +95,12 @@ public class VistaTabPaneRounds extends JFXTabPane {
         VBox vistaTab = new VBox();
         vistaTab.getStyleClass().add("vista-tab");
         vistaTab.getStyleClass().add("vista-puntaje");
-        VistaPuntajeTotal vistaPuntaje = new VistaPuntajeTotal(this.competidor1,this.competidor2);
         vistaTab.setSpacing(5);
         vistaTab.setAlignment(Pos.CENTER);
 
-        vistaTab.getChildren().addAll(contenedorRound, vistaPuntaje);
+        vistaTab.getChildren().addAll(contenedorRound);
         tab.setContent(vistaTab);
-        tab.setOnSelectionChanged(new TabEventHandler());
+//        tab.setOnSelectionChanged(new TabEventHandler());
         this.getTabs().add(tab);
 
     }
@@ -171,15 +171,15 @@ public class VistaTabPaneRounds extends JFXTabPane {
     }
 
     public void ocultarSumatoriaTotal() {
-        VBox vistaTab = (VBox) this.getSelectionModel().getSelectedItem().getContent();
-        VistaPuntajeTotal vistaPuntaje = (VistaPuntajeTotal) vistaTab.getChildren().get(1);
-        vistaPuntaje.ocultarPuntajes();
+//        VBox vistaTab = (VBox) this.getSelectionModel().getSelectedItem().getContent();
+//        VistaPuntajeTotal vistaPuntaje = (VistaPuntajeTotal) vistaTab.getChildren().get(1);
+//        vistaPuntajeTotal.ocultarPuntajes();
     }
 
     public void mostrarSumatoriaTotal(){
-        VBox vistaTab = (VBox) this.getSelectionModel().getSelectedItem().getContent();
-        VistaPuntajeTotal vistaPuntaje = (VistaPuntajeTotal) vistaTab.getChildren().get(1);
-        vistaPuntaje.mostrarPuntajes();
+//        VBox vistaTab = (VBox) this.getSelectionModel().getSelectedItem().getContent();
+//        VistaPuntajeTotal vistaPuntaje = (VistaPuntajeTotal) vistaTab.getChildren().get(1);
+//        vistaPuntajeTotal.mostrarPuntajes();
     }
 
     public void ocultarSumatoriaRound() {
