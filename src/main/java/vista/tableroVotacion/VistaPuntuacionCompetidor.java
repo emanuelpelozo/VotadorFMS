@@ -1,7 +1,5 @@
 package vista.tableroVotacion;
 
-import com.sun.javafx.tk.FontLoader;
-import com.sun.javafx.tk.Toolkit;
 import controlador.BonificacionActionEvent;
 import controlador.CasilleroEventHandler;
 import controlador.VistaPuntuacionCompetidorEventHandler;

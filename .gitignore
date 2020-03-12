@@ -36,7 +36,7 @@ buildNumber.properties
 .flattened-pom.xml
 
 ########################
-## Recursos
+## Recursos de prueba
 ########################
-src/main/resources/fonts
-src/main/resources/images
+recursos_pruebas
+

@@ -139,7 +139,7 @@ public class ControladorVistaVotacion implements Initializable {
 
     @FXML
     private void botonNuevaBatallaClicked(ActionEvent event) throws IOException {
-        CambioDeEscena cambioDeEscena = new CambioDeEscena("../vista/vistaPrincipal.fxml",
+        CambioDeEscena cambioDeEscena = new CambioDeEscena("/vistaPrincipal.fxml",
                 (Node) event.getSource());
 
         cambioDeEscena.cambiarEscena();
